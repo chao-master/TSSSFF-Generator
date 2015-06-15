@@ -38,7 +38,11 @@ function drawImageElement(element,after){
         width = element.innerWidth(),
         height = element.innerHeight(),
         position = element.position(),
-        img = new Image();
+        img = new Image()
+        $(img).attr("crossorigin","anonymous")
+    if (src.substr(0,1) == '"' || src.substr(0,1) == "'"){
+        src = src.slice(1,-1)
+    }
     if (element.hasClass("card")){
         position = {top:0,left:0}
     }
@@ -58,7 +62,13 @@ function drawImageElement(element,after){
         CONTEXT.drawImage(img,sX,sY,sWidth,sHeight,position.left,position.top,width,height);
         if(after){after()}
     }
-    img.src = src;
+    img.onerror = function(){
+        mayError({
+            error:"Failed to load image "+$(this).attr("src"),
+            details:"Image could not be loaded to generate the export image, If the image otherwise loads normally then the server has CROS disabled. Try a host like imgur which dosen't"
+        })
+    }
+    img.src = src
 }
 
 function redraw(){
@@ -72,6 +82,13 @@ function redraw(){
                 drawImageElement(t);
             }
         })
-        $(window).resize()
+        $(window).resize();
     })
+    $("#canvasExport")
+        .attr("download",$(".name").text())
+        .attr("href",CANVAS[0].toDataURL())
 }
+
+$(document).ready(function(){
+    $("#canvasExport").mousedown(redraw)
+})

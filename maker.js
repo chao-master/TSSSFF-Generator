@@ -4,6 +4,7 @@ var EDIT_KEY = null;
 //Display error
 function mayError(errObj){
     if (errObj.error){
+        console.log(errObj)
         $("#error strong").text(errObj.error);
         $("#error em").text(errObj.details);
         $("#error").show()

@@ -18,10 +18,12 @@
             dd{
                 margin-left: calc(50% + 20px)!important;
             }
+            #exportImg {
+                display:none;
+            }
         </style>
     </head>
     <body>
-
         <div class="cardHelper">
             <div class="effect"></div>
             <div class="flavour"></div>
@@ -71,12 +73,12 @@
                                     <button value=""></button>
                                 </div>
                                 <input type="text" class="copyright" placeholder="Copyright &amp; Artist infomation" required/>
-
-                                <canvas id="exportImg" style="position:absolute" width="788" height="1088"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="controls col-md-6">
                     <div class="panel">
                         <div class="panel-heading">
@@ -94,7 +96,10 @@
 
                             <button id="save" class="btn btn-success">Save</button>
                             <button id="new" class="btn btn-primary">New</button>
-                            <button id="export" class="btn btn-warning">Export <em> Experimental </em></button>
+                            <button id="export" class="btn btn-warning">Export <em>Experimental</em></button>
+                            <a id="canvasExport" class="btn btn-warning"><em>Even more experimental</em> Export
+                                <canvas id="exportImg" width="788" height="1088"></canvas>
+                            </a>
                             <!--<button id="exportTo" class="btn btn-warning">Export to shipbooru</button>-->
                             <i id="working" class="fa fa-cog fa-spin fa-3x" style="display:none;vertical-align:middle;"></i>
 
