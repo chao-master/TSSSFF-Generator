@@ -10,7 +10,7 @@ function drawTextElement(element){
         x = element.position().left;
 
     CONTEXT.textAlign = element.css("text-align");
-    CONTEXT.font = element.css("font");
+    CONTEXT.font = element.css("font-size") + " " + element.css("font-family");
     CONTEXT.fillStyle = element.css("color");
     CONTEXT.textBaseline = "top";
 
@@ -97,7 +97,7 @@ function redraw(){
         })
     })
     $("#canvasExport")
-        .attr("download",$(".name").text())
+        .attr("download",$(".name").text()+".png")
         .attr("href",CANVAS[0].toDataURL())
 }
 
