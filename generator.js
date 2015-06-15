@@ -2,9 +2,9 @@ var CANVAS = $("#exportImg"),
     CONTEXT = CANVAS[0].getContext("2d")
 
 function drawTextElement(element){
-    var words = (element.val() || element.text()).split(/ /),
+    var words = (element.val() || element.text()).match(/\S*\s|\S*$/g),
         lineHeight = element.css("line-height").slice(0,-2)*1,
-        line = words[0],
+        line = "",
         width = element.width(),
         y = element.position().top,
         x = element.position().left;
@@ -20,9 +20,9 @@ function drawTextElement(element){
         x += width;
     }
 
-    for(var i=1;i<words.length;i++){
-        var test = line + ' ' + words[i];
-        if (CONTEXT.measureText(test).width > width){
+    for(var i=0;i<words.length;i++){
+        var test = line + words[i];
+        if (test.substr(test.length-1) == "\n" || CONTEXT.measureText(test).width > width){
             CONTEXT.fillText(line,x,y);
             line = words[i];
             y += lineHeight;
