@@ -71,8 +71,8 @@ function drawImageElement(element,after){
     }
     img.onerror = function(){
         mayError({
-            error:"Failed to load image "+$(this).attr("src"),
-            details:"Image could not be loaded to generate the export image, If the image otherwise loads normally then the server has CROS disabled. Try a host like imgur which dosen't, or derpibooru which is specially allowed."
+            error:"Failed to load card art",
+            details:"If the image otherwise loads normally then the server has CROS disabled. Try a host like imgur which dosen't, or derpibooru which is specially allowed."
         })
     }
     img.src = src
