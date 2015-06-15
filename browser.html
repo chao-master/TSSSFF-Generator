@@ -33,6 +33,7 @@
                                     <th>&nbsp;</th>
                                     </tr>
                             </table>
+                            <button class="btn" id="more">Load More</button>
                         </div>
                     </div>
                 </div>
@@ -51,6 +52,7 @@
                     "amount":50
                 },function(r){
                     var d = JSON.parse(r);
+                    LAST_KEY = d[d.length-1].viewkey
                     $.each(d,function(_,i){
                         var key = i.viewkey;
 
@@ -129,6 +131,7 @@
             $(document).ready(function() {
                 $.material.init();
                 loadMoreCards()
+                $("#more").click(loadMoreCards)
             });
         </script>
     </body>
