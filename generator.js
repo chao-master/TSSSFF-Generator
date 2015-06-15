@@ -46,6 +46,13 @@ function drawImageElement(element,after){
     if (element.hasClass("card")){
         position = {top:0,left:0}
     }
+    if (!src){
+        if(after){after()}
+        return;
+    }
+    if (!src.match(document.location.origin) && src.match(/https?:\/\//)){
+        src = "imgProxy.php?img="+encodeURIComponent(src)
+    }
     img.onload = function() {
         var sWidth = img.width,
             sHeight = img.height,
@@ -65,7 +72,7 @@ function drawImageElement(element,after){
     img.onerror = function(){
         mayError({
             error:"Failed to load image "+$(this).attr("src"),
-            details:"Image could not be loaded to generate the export image, If the image otherwise loads normally then the server has CROS disabled. Try a host like imgur which dosen't"
+            details:"Image could not be loaded to generate the export image, If the image otherwise loads normally then the server has CROS disabled. Try a host like imgur which dosen't, or derpibooru which is specially allowed."
         })
     }
     img.src = src
@@ -74,15 +81,20 @@ function drawImageElement(element,after){
 function redraw(){
     $(".card").css("transform","")
     drawImageElement($(".card"),function(){
-        $(".card>*:visible:not(.type)").each(function(){
-            var t=$(this);
-            if (t.css("background-image") == "none"){
-                drawTextElement(t);
-            } else {
-                drawImageElement(t);
-            }
+        $(".name, .image, .attrs,.card .effect,.card .flavour, .copyright").each(function(){
+            drawTextElement($(this));
         })
-        $(window).resize();
+        drawImageElement($(".image"),function(){
+            var toDo = 5;
+            $(".iconCard,.iconGender,.iconRace,.iconGoal,.iconTime").each(function(){
+                drawImageElement($(this),function(){
+                    toDo--;
+                    if(!toDo){
+                        $(window).resize();
+                    }
+                });
+            })
+        })
     })
     $("#canvasExport")
         .attr("download",$(".name").text())
