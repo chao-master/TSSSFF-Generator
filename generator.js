@@ -21,13 +21,14 @@ function drawTextElement(element){
     }
 
     for(var i=0;i<words.length;i++){
-        var test = line + words[i];
-        if (test.substr(test.length-1) == "\n" || CONTEXT.measureText(test).width > width){
+        var test = line + words[i].slice(0,-1);
+        var join = words[i].substr(test.length-1)
+        if (join == "\n" || CONTEXT.measureText(test).width > width){
             CONTEXT.fillText(line,x,y);
             line = words[i];
             y += lineHeight;
         } else {
-            line = test;
+            line = test+join;
         }
     }
     CONTEXT.fillText(line,x,y);
