@@ -79,7 +79,7 @@ function loadMoreCards(){
                 )
             ).append(
                 $("<td>").append(
-                    $("<div>").addClass("checkbox").append()
+                    $("<div>").addClass("checkbox").append(
                         $("<input>").attr("type","checkbox")
                     )
                 )
