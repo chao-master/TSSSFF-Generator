@@ -32,16 +32,74 @@
         return $card;
     }
 
-    function getRange($minViewKey,$amount){
+    function getRange($minViewKey,$amount,$filter){
         $minViewKey = pg_escape_string($minViewKey);
         $amount = pg_escape_string($amount);
-        $query = "SELECT viewKey,classes,name,attr,image,copyright FROM tsssff_savedcards2 WHERE viewKey > '$minViewKey' ORDER BY viewKey LIMIT $amount;";
+        $whereFilter = parseFilterString($filter)
+        $query = "SELECT viewKey,classes,name,attr,image,copyright FROM tsssff_savedcards2 WHERE viewKey > '$minViewKey' $whereFilter ORDER BY viewKey LIMIT $amount;";
         $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
         $cards = pg_fetch_all($result);
         if (!$cards){
             dieError("Query error getting cards",pg_last_error());
         }
         return $cards;
+    }
+
+    function parseFilterString($filterString){
+        preg_match_all('#(?:([^":]+):)?("(?:\\\\\\\\.|[^\\\\\\\\"])*"|\\S+)#', $filterString, $matches, PREG_SET_ORDER);
+
+        $whereCause = "";
+
+        foreach ($matches as $match){
+            $field = strtolower($match[1]);
+            $value = $match[2];
+            if (substr($value,0,1) == '"'){
+                $value = stripslashes(substr($value,0,strlen($needle)-2));
+            }
+            $value = pg_escape_string($value);
+            if ($field){
+                $dbField = "";
+                switch ($field){
+                    case "attributes":
+                    case "attr":
+                        $dbField = "attr";
+                        break;
+                    case "name":
+                        $dbField = "name";
+                        break;
+                    case "kind":
+                    case "is":
+                    case "icon":
+                        $dbField = "classes";
+                        break;
+                    case "effect":
+                    case "body":
+                    case "rule":
+                        $dbField = "effect";
+                        break;
+                    case "flavour":
+                    case "flavor":
+                        $dbField = "flavour";
+                        break;
+                    case "copyright":
+                        $dbField = "copyright";
+                        break;
+                    default:
+                        dieError("Bad Field","$field is not a recognized filter field.")
+                        break;
+                }
+                $whereCause .= "AND ($field = '$value')");
+            } else {
+                $whereCause .= "AND (
+                    (name = $value) OR
+                    (attr = $value) OR
+                    (effect = $value) OR
+                    (flavour = $value) OR
+                    (copyright = $value)
+                )";
+            }
+        }
+        return $whereCause;
     }
 
     function putCard($editKey,$classes,$name,$attr,$effect,$flavour,$image,$copyright){
@@ -104,7 +162,11 @@
 
         if (array_key_exists("amount",$_GET)){
             if ($mode == "view"){
-                print json_encode(getRange($_GET["view"],$_GET["amount"]));
+                $filter = "";
+                if (array_key_exists("filter",$_GET)){
+                    $filter = $_GET["filter"];
+                }
+                print json_encode(getRange($_GET["view"],$_GET["amount"],$filter));
             } else {
                 dieError("amount parameter only valid with view parameter");
             }
