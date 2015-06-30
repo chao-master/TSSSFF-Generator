@@ -79,7 +79,9 @@ function loadMoreCards(){
                 )
             ).append(
                 $("<td>").append(
-                    $("<input>").attr("type","checkbox")
+                    $("<div>").addClass("checkbox").append()
+                        $("<input>").attr("type","checkbox")
+                    )
                 )
             ).appendTo("#viewTable")
         })
