@@ -58,9 +58,9 @@ function loadMoreCards(){
             })
 
             var chkBox = $("<div>").addClass("checkbox").append(
-                //$("<label>").append(
+                $("<label>").append(
                     $("<input>").attr("type","checkbox")
-                //)
+                )
             )
             $.material.checkbox(chkBox)
 
