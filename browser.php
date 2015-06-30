@@ -28,7 +28,7 @@
                     <div class="panel">
                         <div class="panel-body">
                             <form>
-                                <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter" value="<?=htmlspecialchar($filter)?>"/>
+                                <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter" value="<?=htmlspecialchars($filter)?>"/>
                                 <button class="btn btn-primary" type="submit">Filter</button>
                             </form>
                         </div>
