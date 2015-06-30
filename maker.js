@@ -88,44 +88,6 @@ function save(){
     })
 }
 
-function exportCard(toShipbooru){
-    $.post("../CardMachine/TSSSF/ponyimage.php",{
-        classes:$(".card").attr("class"),
-        name:$(".card .nameInput").val(),
-        attr:$(".card .attrs").val(),
-        effect:$(".card .effect").val(),
-        flavour:$(".card .flavour").val(),
-        copyright:$(".card .copyright").val(),
-        image:$("#image").val()
-    },function(r){
-        var d = JSON.parse(r);
-        if(mayError(d)) {return;}
-        /*if(toShipbooru){
-            var data = new FormData();
-            data.append("upload",new Blob([d.img_url],{type:"image/png"}))
-            data.append("title",$(".card .name").val());
-            data.append("attr",$(".card .attrs").val());
-            data.append("rating","q");
-            data.append("submit","Upload");
-            $.ajax({
-                url:"http://secretshipfic.booru.org/index.php?page=post&s=list",
-                type:"POST",
-                data: data,
-                processData: false,
-                contentType: false,
-                xhrFields: {
-                    withCredentials: true
-                },
-                complete:function(n,c,d){
-                    console.log(n,c,d)
-                }
-            })
-        } else {*/
-        open("data:image/png;base64,"+d.img_url);
-        //}
-    })
-}
-
 function cardSetup(){
     //On card button clicks, remove other classes and add new ones.
     //Unless it is changeling, special case, just toggle.
@@ -211,7 +173,6 @@ function cardSetup(){
     //Save, New & Export buttons
     $("#save").click(save)
     $("#new").click(newCard)
-    $("#export").click(exportCard)
     //$("#exportTo").click(function(){exportCard(1)})
 
     //Log number of ajax events for the spinner
