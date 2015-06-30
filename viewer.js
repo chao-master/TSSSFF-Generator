@@ -77,6 +77,10 @@ function loadMoreCards(){
                         $('<i class="fa fa-external-link">')
                     )
                 )
+            ).append(
+                $("<td>").append(
+                    $("<input>").attr("type","checkbox")
+                )
             ).appendTo("#viewTable")
         })
     })

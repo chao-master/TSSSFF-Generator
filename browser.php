@@ -60,6 +60,7 @@
                                     <th>Copyright</th>
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
                                     </tr>
                             </table>
                             <button class="btn" id="more">Load More</button>
