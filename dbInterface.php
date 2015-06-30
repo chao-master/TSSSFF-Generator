@@ -9,7 +9,7 @@
             $USING = $_POST;
             break;
         default:
-            dieError("Invalid Method","Only GET and POST supported")
+            dieError("Invalid Method","Only GET and POST supported");
             break;
     }
 
