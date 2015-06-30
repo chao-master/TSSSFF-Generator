@@ -50,7 +50,7 @@
             $viewKey = uniqueKey($editKey,"viewkey");
         } else {
             if (!preg_match("/^[0-9a-f]+$/",$editKey)){
-                dieError("Invalid paramater","editKey ($editKey) was not valid or is a reserved key");
+                dieError("Invalid parameter","editKey ($editKey) was not valid or is a reserved key");
             }
             $editKey = pg_escape_string($editKey);
         }
@@ -94,19 +94,19 @@
         }
         if(array_key_exists("view",$_GET)) {
             if ($mode){
-                dieError("Invalid request","Both edit and view paramaters given");
+                dieError("Invalid request","Both edit and view parameters given");
             }
             $mode = "view";
         }
         if(!$mode){
-            dieError("Invalid request","One of edit or view paramaters must be given");
+            dieError("Invalid request","One of edit or view parameters must be given");
         }
 
         if (array_key_exists("amount",$_GET)){
             if ($mode == "view"){
                 print json_encode(getRange($_GET["view"],$_GET["amount"]));
             } else {
-                dieError("amount paramater only valid with view paramater");
+                dieError("amount parameter only valid with view parameter");
             }
         } else {
             $card = getCard($mode,$_GET[$mode]);

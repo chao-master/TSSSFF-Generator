@@ -4,7 +4,7 @@ TSSSFF-Generator
 ## Using
 A live example can be found on [my website](http://ripppo.me/TSSSFF-Beta/) and is free to use for all Safe for work cards.
 
-The tool is hopefull self explanatory:
+The tool is hopefully self explanatory:
  * Click and type on each field to edit them.
  * Hover over the Icons to get to change them.
  * Card types can be changed by hovering the card type on the left of the card.
@@ -12,7 +12,7 @@ The tool is hopefull self explanatory:
 
 ##Credits and thanks.
  * Majority of code is Written by [Ripp_ AKA chao-master](https://github.com/chao-master)
- * The backend system is modified off the offical code by
+ * The legacy export system is modified off the official code by
    * [Horrible People](https://github.com/HorriblePeople)
    * Based off a fork by [Coandco](https://github.com/coandco)
    * With help from [Latent Logic](https://github.com/Latent-Logic)
@@ -21,9 +21,9 @@ The tool is hopefull self explanatory:
    * [MrQuallzin](https://github.com/MrQuallzin) For bug reports and helping with the pony power quick inserts.
 
 ## Forking
-You are welcome to fork the project and run your own instance in terms with the LISENCE.
+You are welcome to fork the project and run your own instance in terms with the LICENSE.
 
-It would be nice if improvments are feed back into the main project with Pull requests but it is not nessesery to do so.
+It would be nice if improvements are feed back into the main project with Pull requests but it is not necessary to do so.
 
 To setup your own instance of the system you will need to read the **Creating the table** and **Adding Special cards** sections below.
 
@@ -32,8 +32,8 @@ The system runs using psql and apache.
 ### Creating the table
 At current the code is setup to use a psql database connection.
 
-The connection is currentlly hard coded in dbInterface.php to my connection details
-But this is easily changable
+The connection is currently hard coded in dbInterface.php to my connection details
+But this is easily changeable
 
 The table exists with the following schema
 ```
@@ -64,13 +64,13 @@ namely I overhauled the structure and still have the old legacy cards,
 feel free to change it a later commit at a milestone point proably will)*
 
 ### Adding Special cards
-The creator can only save cards with hexidecimal editkeys and viewkeys
-this allows for non hexidecimal keys to be used for special cards that are
+The creator can only save cards with hexadecimal editkeys and viewkeys
+this allows for non hexadecimal keys to be used for special cards that are
 impossible for anyone to edit even if they extract the editkey from the code.
 Such a key `SPC-404` is used for the special 404 card.
 
-However such keys must be added manuall to the database,
-here is an example for the SPC-404, refrenced in code.
+However such keys must be added manually to the database,
+here is an example for the SPC-404, referenced in code.
 
 ```
 INSERT INTO tsssff_savedcards2 VALUES (
@@ -85,12 +85,12 @@ INSERT INTO tsssff_savedcards2 VALUES (
     'Art: sirzi, Card:Ripp_');
 ```
 
-Alternatlly a card can be created with the editor when the `UPDATE` command used to modify the editkey and viewkey in the database as nessesery.
+Alternately a card can be created with the editor when the `UPDATE` command used to modify the editkey and viewkey in the database as necessary.
 
 ##Misc
 
 ###Special symbols.
-The following escapes are valid on the editor to create the spcial symbols:
+The following escapes are valid on the editor to create the special symbols:
  * \earth
  * \unicorn
  * \pegasus
@@ -101,4 +101,4 @@ The following escapes are valid on the editor to create the spcial symbols:
  * \time
  * \ship
 
-In the database these are saved as the unicode symbols the modified fonts use.
+In the database these are saved as the Unicode symbols the modified fonts use.

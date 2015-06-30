@@ -90,7 +90,7 @@ function drawImageElement(element,after,src){
     img.onerror = function(){
         mayError({
             error:"Failed to load card art",
-            details:"If the image otherwise loads normally then the server has CROS disabled. Try a host like imgur which dosen't, or derpibooru which is specially allowed."
+            details:"If the image otherwise loads normally then the server has CROS disabled. Try a host like imgur which doesn't, or derpibooru which is specially allowed."
         })
         if(after){after()}
     }
