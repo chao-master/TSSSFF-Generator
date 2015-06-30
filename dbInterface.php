@@ -181,11 +181,11 @@
             if ($viewKey !== null){
                 dieError("Invalid request","Both edit and view parameters given");
             } else {
-                $mode = "edit"
+                $mode = "edit";
             }
         } else {
             if ($viewKey !== null){
-                $mode = "view"
+                $mode = "view";
             } else {
                 dieError("Invalid request","One of edit or view parameters must be given");
             }
