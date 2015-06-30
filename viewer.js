@@ -1,4 +1,4 @@
-var LAST_KEY = '';
+var LAST_KEY = '0';
 function loadMoreCards(){
     $.get("dbInterface.php",{
         "view":LAST_KEY,
