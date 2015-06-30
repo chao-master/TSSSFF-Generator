@@ -1,6 +1,5 @@
 <?php
     $filter = $_GET["filter"] or "";
-    $sFilter = addslashes($filter);
 ?>
 
 <html>
@@ -29,7 +28,7 @@
                     <div class="panel">
                         <div class="panel-body">
                             <form>
-                                <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter" value="<?=$sFilter?>"/>
+                                <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter" value="<?=htmlspecialchar($filter)?>"/>
                                 <button class="btn btn-primary" type="submit">Filter</button>
                             </form>
                         </div>
@@ -65,7 +64,7 @@
         <script>
             $(document).ready(function() {
                 $.material.init();
-                FILTER = "<?=$sFilter?>"
+                FILTER = "<?=addslashes($filter)?>"
                 loadMoreCards()
                 $("#more").click(loadMoreCards)
             });
