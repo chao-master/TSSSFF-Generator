@@ -1,3 +1,8 @@
+<?php
+    $filter = $_GET["filter"] or "";
+    $sFilter = addslashes($filter);
+?>
+
 <html>
     <head>
         <title>TSSSFF Card Generator</title>
@@ -24,7 +29,7 @@
                     <div class="panel">
                         <div class="panel-body">
                             <form>
-                                <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter"/>
+                                <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter" value="<?=$sFilter?>"/>
                                 <button class="btn btn-primary" type="submit">Filter</button>
                             </form>
                         </div>
@@ -60,6 +65,7 @@
         <script>
             $(document).ready(function() {
                 $.material.init();
+                FILTER = "<?=$sFilter?>"
                 loadMoreCards()
                 $("#more").click(loadMoreCards)
             });
