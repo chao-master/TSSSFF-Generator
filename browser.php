@@ -111,7 +111,11 @@
             console.log(GET);
             $(document).ready(function() {
                 $.material.init();
-                FILTER = "<?=addslashes($filter)?>"
+                $.extend(GET,{
+                    filter:"",
+                    view:"",
+                    edit:""
+                })
                 loadMoreCards()
                 $("#more").click(loadMoreCards)
             });

@@ -1,10 +1,11 @@
-var LAST_KEY = '',
-    FILTER = '';
+var LAST_KEY = '';
 function loadMoreCards(){
     $.get("dbInterface.php",{
         "view":LAST_KEY,
         "amount":50,
-        "filter":FILTER
+        "filter":GET["filter"],
+        "view":GET["view"],
+        "edit":GET["edit"]
     },function(r){
         var d = JSON.parse(r);
         LAST_KEY = d[d.length-1].viewkey
