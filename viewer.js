@@ -81,12 +81,12 @@ function loadMoreCards(){
                 )
             ).append(
                 $("<td>").append(
-                    $("<div>").addClass("checkbox").append(
+                    $("<div>").addClass("togglebutton").append(
                         $("<label>").append(chkBox)
                     )
                 )
             ).appendTo("#viewTable")
-            $.material.checkbox(chkBox)
+            $.material.togglebutton(chkBox)
         })
     })
 }
