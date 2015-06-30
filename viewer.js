@@ -57,6 +57,13 @@ function loadMoreCards(){
                 })
             })
 
+            var chkBox = $("<div>").addClass("checkbox").append(
+                //$("<label>").append(
+                    $("<input>").attr("type","checkbox")
+                //)
+            )
+            $.material.checkbox(chkBox)
+
             $("<tr>").append(
                 $("<td>").text(i.name)
             ).append(iconCell).append(
@@ -78,11 +85,7 @@ function loadMoreCards(){
                     )
                 )
             ).append(
-                $("<td>").append(
-                    $("<div>").addClass("checkbox").append(
-                        $("<input>").attr("type","checkbox")
-                    )
-                )
+                $("<td>").append(chkBox)
             ).appendTo("#viewTable")
         })
     })
