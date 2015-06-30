@@ -54,7 +54,7 @@
             $field = strtolower($match[1]);
             $value = $match[2];
             if (substr($value,0,1) == '"'){
-                $value = stripslashes(substr($value,0,strlen($needle)-2));
+                $value = stripslashes(substr($value,1,strlen($needle)-1));
             }
             $value = pg_escape_string($value);
             if ($field){
@@ -85,17 +85,17 @@
                         $dbField = "copyright";
                         break;
                     default:
-                        dieError("Bad Field","$field is not a recognized filter field.")
+                        dieError("Bad Field","$field is not a recognized filter field.");
                         break;
                 }
-                $whereCause .= "AND ($field = '$value')");
+                $whereCause .= "AND ($field ILIKE '%$value%')";
             } else {
                 $whereCause .= "AND (
-                    (name = $value) OR
-                    (attr = $value) OR
-                    (effect = $value) OR
-                    (flavour = $value) OR
-                    (copyright = $value)
+                    (name ILIKE '%$value%') OR
+                    (attr ILIKE '%$value%') OR
+                    (effect ILIKE '%$value%') OR
+                    (flavour ILIKE '%$value%') OR
+                    (copyright ILIKE '%$value%')
                 )";
             }
         }
