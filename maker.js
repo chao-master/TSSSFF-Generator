@@ -4,6 +4,7 @@ var EDIT_KEY = null;
 //Display error
 function mayError(errObj){
     if (errObj.error){
+        console.log(errObj)
         $("#error strong").text(errObj.error);
         $("#error em").text(errObj.details);
         $("#error").show()
@@ -181,7 +182,6 @@ function cardSetup(){
 
     //Replace and create tooltip hints
     $.each(SPECIAL_REPLACE,function(key,replace){
-        console.log([key,replace,"dt[data-original-title='\\"+key+"']",$("dt[data-original-title='\\"+key+"']")]);
         $("dt[data-original-title='\\"+key+"']").attr("data-original-title",replace).tooltip();
     })
 

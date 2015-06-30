@@ -33,9 +33,9 @@
     }
 
     function getRange($minViewKey,$amount){
-        $minViewKey = pg_escape_string($minViewId);
+        $minViewKey = pg_escape_string($minViewKey);
         $amount = pg_escape_string($amount);
-        $query = "SELECT viewKey,classes,name,attr,image,copyright FROM tsssff_savedcards2 WHERE viewKey >= '$minViewKey' ORDER BY viewKey LIMIT $amount;";
+        $query = "SELECT viewKey,classes,name,attr,image,copyright FROM tsssff_savedcards2 WHERE viewKey > '$minViewKey' ORDER BY viewKey LIMIT $amount;";
         $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
         $cards = pg_fetch_all($result);
         if (!$cards){
@@ -104,7 +104,7 @@
 
         if (array_key_exists("amount",$_GET)){
             if ($mode == "view"){
-                print json_encode(getRange($view,$_GET["amount"]));
+                print json_encode(getRange($_GET["view"],$_GET["amount"]));
             } else {
                 dieError("amount paramater only valid with view paramater");
             }

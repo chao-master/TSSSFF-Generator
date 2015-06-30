@@ -18,16 +18,21 @@
             dd{
                 margin-left: calc(50% + 20px)!important;
             }
+            #exportImg {
+                display:none;
+            }
         </style>
     </head>
     <body>
-
         <div class="cardHelper">
             <div class="effect"></div>
             <div class="flavour"></div>
         </div>
 
         <main class="clearAfter container">
+            <div class="alert alert-warning">
+                Holdup! This is the developmental version of the card maker, things here may frequently change, be unstable or down right broken. You are proably looking for the <strong><a href="http://ripppo.me/TSSSFF-Generator/">Stable Version</a></strong>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="panel">
@@ -75,6 +80,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="controls col-md-6">
                     <div class="panel">
                         <div class="panel-heading">
@@ -92,9 +99,27 @@
 
                             <button id="save" class="btn btn-success">Save</button>
                             <button id="new" class="btn btn-primary">New</button>
-                            <button id="export" class="btn btn-warning">Export <em> Experimental </em></button>
+
+                            <div class="btn-group">
+                                <a id="canvasExport" class="btn btn-warning">Export
+                                    <canvas id="exportImg" width="788" height="1088"></canvas>
+                                </a>
+                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="collapse" data-target="#advanceExport">
+                                    <span class="caret"></span>
+                                </button>
+                            </div>
+
+                            <button id="export" class="btn btn-material-grey">Legacy Export</button>
                             <!--<button id="exportTo" class="btn btn-warning">Export to shipbooru</button>-->
                             <i id="working" class="fa fa-cog fa-spin fa-3x" style="display:none;vertical-align:middle;"></i>
+
+                            <div class="panel-collapse collapse" id="advanceExport">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="bleedCard"> Add card bleed
+                                    </label>
+                                </div>
+                            </div>
 
                             <div id="error" class="alert alert-danger" style="display:none">
                                 <strong></strong>
@@ -102,10 +127,10 @@
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control floating-label" type="text" id="editUrl" placeholder="Edit link: (lets you modify this copy of the card, keep secret)"/>
+                                <input class="form-control floating-label" type="text" id="editUrl" placeholder="Edit link: (lets you modify this copy of the card, keep secret)" readonly/>
                             </div>
                             <div class="form-group">
-                                <input class="form-control floating-label" type="text" id="shareUrl" placeholder="Sharing Link:"/>
+                                <input class="form-control floating-label" type="text" id="shareUrl" placeholder="Sharing Link:" readonly/>
                             </div>
                             Symbols and Powers Guide:
                             <div class=row>
@@ -148,6 +173,13 @@
                     <div class="panel-footer">
                         This project is not associated with or necessarily endorsed by HORRIBLE PEOPLE PRODUCTIONS, the creators of Twilight Sparkle's Secret Shipfic Folder. <br/>
                         For more infomation about the game, please visit <a href="http://tsssf-tcg.tumblr.com/">The offical Twilight Sparkle's Secret Shipfic Folder site</a>
+                    <br/>
+                        Issues &amp; notes:
+                        <ul>
+                            <li>Export positions text slighty wrong, less of an issue on chrome.</li>
+                            <li>Export will not work with images from all site due to browser security.</li>
+                            <li>Legacy export messes up unicode characters.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -157,6 +189,7 @@
         <script src="js/ripples.min.js"></script>
         <script src="js/material.min.js"></script>
         <script src="maker.js"></script>
+        <script src="generator.js"></script>
         <script>
             $(document).ready(function() {
                 $.material.init();
