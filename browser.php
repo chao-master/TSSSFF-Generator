@@ -51,8 +51,10 @@
                         <div class="panel-body">
                             <button class="btn">New set</button>
                             <div class="togglebutton">
-                                <label>Input mode</label>
-                                <input type="checkbox"/>
+                                <label>Input mode
+                                    <input type="checkbox"/>
+                                </label>
+                            </div>
                             </div>
                             <div class="form-group">
                                 <input class="form-control floating-label" type="text" id="editUrl" placeholder="Edit link: (lets you add and remove cards from the set, keep secret)" readonly/>
