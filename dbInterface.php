@@ -35,7 +35,7 @@
     function getRange($minViewKey,$amount,$filter){
         $minViewKey = pg_escape_string($minViewKey);
         $amount = pg_escape_string($amount);
-        $whereFilter = parseFilterString($filter)
+        $whereFilter = parseFilterString($filter);
         $query = "SELECT viewKey,classes,name,attr,image,copyright FROM tsssff_savedcards2 WHERE viewKey > '$minViewKey' $whereFilter ORDER BY viewKey LIMIT $amount;";
         $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
         $cards = pg_fetch_all($result);
