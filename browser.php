@@ -49,7 +49,17 @@
                             Card Sets.
                         </div>
                         <div class="panel-body">
-                            Todo: put set things here?
+                            <button class="btn">New set</button>
+                            <div class="togglebutton">
+                                <label>Input mode</label>
+                                <input type="checkbox"/>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control floating-label" type="text" id="editUrl" placeholder="Edit link: (lets you add and remove cards from the set, keep secret)" readonly/>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control floating-label" type="text" id="shareUrl" placeholder="Sharing Link:" readonly/>
+                            </div>
                         </div>
                     </div>
                 </div>
