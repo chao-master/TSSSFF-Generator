@@ -80,7 +80,7 @@ function loadMoreCards(){
                     )
                 )
             ).append(
-                $("<td>").append(
+                $("<td>").addClass("setOnly").append(
                     $("<div>").addClass("togglebutton").append(
                         $("<label>").append(chkBox)
                     )

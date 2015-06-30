@@ -19,6 +19,12 @@
             .icons img{
                 max-height:22px;
             }
+            .setOnly{
+                display:none;
+            }
+            .setAddMode .setOnly{
+                display:table-cell;
+            }
         </style>
     </head>
     <body>
@@ -60,7 +66,7 @@
                                     <th>Copyright</th>
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
+                                    <th class="setOnly">&nbsp;</th>
                                     </tr>
                             </table>
                             <button class="btn" id="more">Load More</button>
