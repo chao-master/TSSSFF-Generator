@@ -24,13 +24,26 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="panel">
+                        <div class="panel-heading">
+                            Filter Cards
+                        </div>
                         <div class="panel-body">
                             <form>
                                 <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter" value="<?=htmlspecialchars($filter)?>"/>
                                 <button class="btn btn-primary" type="submit">Filter</button>
                             </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            Card Sets.
+                        </div>
+                        <div class="panel-body">
+                            Todo: put set things here?
                         </div>
                     </div>
                 </div>
