@@ -96,12 +96,27 @@
 
                             <button id="save" class="btn btn-success">Save</button>
                             <button id="new" class="btn btn-primary">New</button>
-                            <a id="canvasExport" class="btn btn-warning">Export
-                                <canvas id="exportImg" width="788" height="1088"></canvas>
-                            </a>
+
+                            <div class="btn-group">
+                                <a id="canvasExport" class="btn btn-warning">Export
+                                    <canvas id="exportImg" width="788" height="1088"></canvas>
+                                </a>
+                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="collapse" data-target="#advanceExport">
+                                    <span class="caret"></span>
+                                </button>
+                            </div>
+
                             <button id="export" class="btn btn-material-grey">Legacy Export</button>
                             <!--<button id="exportTo" class="btn btn-warning">Export to shipbooru</button>-->
                             <i id="working" class="fa fa-cog fa-spin fa-3x" style="display:none;vertical-align:middle;"></i>
+
+                            <div class="panel-collapse collapse" id="advanceExport">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="bleedCard"> Add card bleed
+                                    </label>
+                                </div>
+                            </div>
 
                             <div id="error" class="alert alert-danger" style="display:none">
                                 <strong></strong>
