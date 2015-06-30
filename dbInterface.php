@@ -4,9 +4,11 @@
     switch ($_SERVER['REQUEST_METHOD']){
         case "GET":
             $USING = $_GET;
+            echo "GET";
             break;
         case "POST":
             $USING = $_POST;
+            echo "POST";
             break;
         default:
             dieError("Invalid Method","Only GET and POST supported");
@@ -15,6 +17,8 @@
 
     function getInput($key,$emptyToNull=false){
         var_dump($USING);
+        var_dump($_GET);
+        var_dump($_POST);
         echo $key;
         echo $USING[$key];
         if(array_key_exists($key,$USING)){
