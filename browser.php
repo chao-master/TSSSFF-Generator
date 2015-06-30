@@ -99,7 +99,7 @@
             GET = [];
             for(var i=0;i<queries.length;i++){
                 var q = queries[i],
-                    eAt = q.indexof("=");
+                    eAt = q.indexOf("=");
                 if (eAt == -1){
                     GET[q] = null;
                 } else {
