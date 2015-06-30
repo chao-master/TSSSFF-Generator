@@ -4,8 +4,8 @@ function loadMoreCards(){
         "view":LAST_KEY,
         "amount":50,
         "filter":GET["filter"],
-        "view":GET["view"],
-        "edit":GET["edit"]
+        "setView":GET["view"],
+        "setEdit":GET["edit"]
     },function(r){
         var d = JSON.parse(r);
         LAST_KEY = d[d.length-1].viewkey

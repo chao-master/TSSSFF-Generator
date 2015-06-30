@@ -1,6 +1,29 @@
 <?php
     #error_reporting(0);
     error_reporting(ALL);
+    switch ($_SERVER['REQUEST_METHOD']){
+        case "GET":
+            $USING = $_GET;
+            break;
+        case "POST":
+            $USING = $_POST;
+            break;
+        default:
+            dieError("Invalid Method","Only GET and POST supported")
+            break;
+    }
+
+    function getInput($key,$emptyToNull=false){
+        if(array_key_exists($key,$USING)){
+            $rtn = $USING[$key];
+            if ($emptyToNull && $rtn === ""){
+                return null;
+            }
+            return $rtn;
+        } else {
+            return null;
+        }
+    }
 
     function uniqueKey($start,$field){
         $key = substr(md5($start),0,32);
@@ -147,25 +170,29 @@
 
         $mode="";
 
-        if(array_key_exists("edit",$_GET)) {
-            $mode = "edit";
-        }
-        if(array_key_exists("view",$_GET)) {
-            if ($mode){
+        $editKey = getInput("edit",true);
+        $viewKey = getInput("view",true);
+        $setViewKey = getInput("setView",true);
+        $setEditKey = getInput("setView",true);
+        $filter = getInput("filter");
+        $amount = getInput("amount",true);
+
+        if ($editKey !== null){
+            if ($viewKey !== null){
                 dieError("Invalid request","Both edit and view parameters given");
+            } else {
+                $mode = "edit"
             }
-            $mode = "view";
-        }
-        if(!$mode){
-            dieError("Invalid request","One of edit or view parameters must be given");
+        } else {
+            if ($viewKey !== null){
+                $mode = "view"
+            } else {
+                dieError("Invalid request","One of edit or view parameters must be given");
+            }
         }
 
-        if (array_key_exists("amount",$_GET)){
+        if (amount !== null){
             if ($mode == "view"){
-                $filter = "";
-                if (array_key_exists("filter",$_GET)){
-                    $filter = $_GET["filter"];
-                }
                 print json_encode(getRange($_GET["view"],$_GET["amount"],$filter));
             } else {
                 dieError("amount parameter only valid with view parameter");
@@ -175,7 +202,7 @@
             if (!$card){
                 $card = getCard("view","SPC-404");
             }
-            if ($mode != "edit" or $card["editkey"] != $_GET[$mode]){
+            if ($mode != "edit" or $card["editkey"] != $editKey){
                 unset($card["editkey"]);
             }
             print json_encode($card);
