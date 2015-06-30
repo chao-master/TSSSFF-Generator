@@ -58,7 +58,6 @@ function loadMoreCards(){
             })
 
             var chkBox = $("<input>").attr("type","checkbox");
-            $.material.checkbox(chkBox)
 
             $("<tr>").append(
                 $("<td>").text(i.name)
@@ -87,6 +86,7 @@ function loadMoreCards(){
                     )
                 )
             ).appendTo("#viewTable")
+            $.material.checkbox(chkBox)
         })
     })
 }
