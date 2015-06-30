@@ -14,6 +14,9 @@
     }
 
     function getInput($key,$emptyToNull=false){
+        var_dump($USING);
+        echo $key;
+        echo $USING[$key];
         if(array_key_exists($key,$USING)){
             $rtn = $USING[$key];
             if ($emptyToNull && $rtn === ""){
