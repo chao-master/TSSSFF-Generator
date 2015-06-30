@@ -1,5 +1,7 @@
 <?php
     $filter = $_GET["filter"] or "";
+    $edit = $_GET["edit"] or "";
+    $view = $_GET["view"] or "";
 ?>
 
 <html>
@@ -93,6 +95,20 @@
         <script src="js/material.min.js"></script>
         <script src="viewer.js"></script>
         <script>
+            var queries = document.location.search.substring(1).split("&");
+            GET = [];
+            for(var i=0;i<queries.length;i++){
+                var q = queries[i],
+                    eAt = q.indexof("=");
+                if (eAt == -1){
+                    GET[q] = null;
+                } else {
+                    var k = q.substr(0,eAt),
+                        v = q.substr(eAt+1);
+                    GET[k] = v
+                }
+            }
+            console.log(GET);
             $(document).ready(function() {
                 $.material.init();
                 FILTER = "<?=addslashes($filter)?>"
