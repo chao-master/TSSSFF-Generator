@@ -1,6 +1,7 @@
 <?php
     #error_reporting(0);
     error_reporting(ALL);
+    $USING = null;
     switch ($_SERVER['REQUEST_METHOD']){
         case "GET":
             $USING = $_GET;
