@@ -17,6 +17,11 @@ $(document).on("state:adjust",function(event,get,oldGet){
         $("#viewTable tr:not(:first-child)").remove();
         loadMoreCards();
     }
+    if ( get["inputMode"] != oldGet["inputMode"]){
+        var chked = get["inputMode"] === true || get["inputMode"] === "true";
+        $("#inputMode").prop("checked",chked);
+        $("body").toggleClass("setAddMode",chked)
+    }
 
 })
 

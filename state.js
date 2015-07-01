@@ -34,11 +34,11 @@ function updateFields(newGet){
 
 window.onpopstate = function(event){
     var oldGet = $.extend({},GET);
-    var GET = parseQuery();
-    $(document).trigger("state:adjust",[GET,oldGet]);
+    var get = parseQuery();
+    $(document).trigger("state:adjust",[get,oldGet]);
 }
 
 $(document).ready(function(){
-    var GET = parseQuery();
-    $(document).trigger("state:adjust",[GET,{"first":1}]);
+    var get = parseQuery();
+    $(document).trigger("state:adjust",[get,{"first":1}]);
 })
