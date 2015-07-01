@@ -1,9 +1,21 @@
 var LAST_KEY = '0';
 
+function updateQuery(){
+    var query = $.map(GET,function(v,k){
+        if (v){
+            return k+"="+v
+        } else {
+            return
+        }
+    }).join("&")
+    history.pushState({},"",document.location.pathname+"?"+query)
+}
+
 function updateFilter(){
     GET["filter"] = $("#filter").val();
     LAST_KEY = '0';
     $("#viewTable tr:not(:first-child)").remove();
+    updateQuery();
     loadMoreCards();
 }
 
