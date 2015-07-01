@@ -29,7 +29,7 @@ function updateQuery(){
 }
 
 GET = {};
-window.onpopevent = function(event){
+window.onpopstate = function(event){
     GET = $.extend({
         filter:"",
         view:"",
