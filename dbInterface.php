@@ -20,7 +20,7 @@
         global $USING;
         if(array_key_exists($key,$USING)){
             $rtn = $USING[$key];
-            if (($flags & $INPUT_FALSE_TO_EMPTY && $rtn === "false")){
+            if (($flags & $INPUT_FALSE_TO_EMPTY) && $rtn === "false"){
                 $rtn = "";
             }
 
