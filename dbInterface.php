@@ -18,8 +18,6 @@
 
     function getInput($key,$emptyToNull=false){
         var_dump($USING);
-        var_dump($_GET);
-        var_dump($_POST);
         echo $key;
         echo $USING[$key];
         if(array_key_exists($key,$USING)){
