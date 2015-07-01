@@ -103,6 +103,9 @@
                 $v = trim($v);
             }
         }
+        if ($setMode != "edit"){
+            unset(set["editkey"]);
+        }
 
         return [
             "cards" => $cards,
