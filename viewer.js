@@ -16,12 +16,22 @@ $(document).on("state:adjust",function(event,get,oldGet){
         LAST_KEY = '0';
         loadMoreCards();
     }
-    if ( get["inputMode"] != oldGet["inputMode"]){
+
+    if ( oldGet["first"]
+        ||get["inputMode"] != oldGet["inputMode"]
+    ){
         var chked = get["inputMode"] === true || get["inputMode"] === "true";
         $("#inputMode").prop("checked",chked);
-        $("body").toggleClass("setAddMode",chked)
+        $("body").toggleClass("hide-add",!chked)
     }
 
+    if ( oldGet["first"]
+        || get["view"] != oldGet["view"]
+        || get["edit"] != oldGet["edit"]
+    ){
+        var isSetting = get["view"] || get["edit"];
+        $("body").toggleClass("hide-set",!isSetting);
+    }
 })
 
 function loadMoreCards(){
@@ -126,7 +136,7 @@ function loadMoreCards(){
                     )
                 )
             ).append(
-                $("<td>").addClass("setOnly").append(
+                $("<td>").addClass("group-add").append(
                     $("<div>").addClass("togglebutton").append(
                         $("<label>").append(chkBox)
                     )

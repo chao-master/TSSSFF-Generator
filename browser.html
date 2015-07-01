@@ -15,11 +15,9 @@
             .icons img{
                 max-height:22px;
             }
-            .setOnly{
+
+            .hide-add .group-add, .hide-set .group-set{
                 display:none;
-            }
-            .setAddMode .setOnly{
-                display:table-cell;
             }
         </style>
     </head>
@@ -44,7 +42,7 @@
                         </div>
                         <div class="panel-body">
                             <button class="btn">New set</button>
-                            <span class="togglebutton">
+                            <span class="togglebutton" class="group-set">
                                 <label>Input mode
                                     <input type="checkbox" id="inputMode"/>
                                 </label>
@@ -71,7 +69,7 @@
                                     <th>Copyright</th>
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
-                                    <th class="setOnly">&nbsp;</th>
+                                    <th class="group-add">&nbsp;</th>
                                     </tr>
                             </table>
                             <button class="btn" id="more">Load More</button>
