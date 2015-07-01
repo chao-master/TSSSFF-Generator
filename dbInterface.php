@@ -87,7 +87,7 @@
             WHERE viewKey > '$minViewKey' $whereFilter
             ORDER BY viewKey LIMIT $amount;
         ";
-        $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
+        $result = pg_query($query) or dieError("Query error getting cards in addMode",pg_last_error());
         $cards = pg_fetch_all($result);
         if (!$cards){
             dieError("Query error getting cards",pg_last_error());
@@ -100,7 +100,7 @@
 
     function getSetInfo($setMode,$key){
         $setQuery = "SELECT editkey,viewkey,name,icon FROM tsssff_sets WHERE ${setMode}key='$key'";
-        $result = pg_query($setQuery) or dieError("Query error getting cards",pg_last_error());
+        $result = pg_query($setQuery) or dieError("Query error getting set",pg_last_error());
         $set = pg_fetch_assoc($result);
         if ($set){
             foreach($set as &$v){
