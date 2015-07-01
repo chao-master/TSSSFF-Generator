@@ -226,7 +226,7 @@
             }
         }
 
-        if (amount !== null){
+        if ($amount !== null){
             if ($mode == "view"){
                 if ($setViewKey !== null){
                     print json_encode(getSet($viewKey,$amount,"view",$setViewKey));
