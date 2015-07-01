@@ -14,11 +14,17 @@
             break;
     }
 
-    function getInput($key,$emptyToNull=false){
+    $INPUT_EMPTY_TO_NULL = 1;
+    $INPUT_FALSE_TO_EMPTY = 2;
+    function getInput($key,$flags){
         global $USING;
         if(array_key_exists($key,$USING)){
             $rtn = $USING[$key];
-            if ($emptyToNull && $rtn === ""){
+            if (($flags & $INPUT_FALSE_TO_EMPTY && $rtn === "false")){
+                $rtn = "";
+            }
+
+            if (($flags & $INPUT_EMPTY_TO_NULL) && $rtn === ""){
                 return null;
             }
             return $rtn;
@@ -239,13 +245,13 @@
 
         $mode="";
 
-        $editKey = getInput("edit",true);
-        $viewKey = getInput("view",true);
-        $setViewKey = getInput("setView",true);
-        $setEditKey = getInput("setEdit",true);
+        $editKey = getInput("edit",$INPUT_EMPTY_TO_NULL);
+        $viewKey = getInput("view",$INPUT_EMPTY_TO_NULL);
+        $setViewKey = getInput("setView",$INPUT_EMPTY_TO_NULL);
+        $setEditKey = getInput("setEdit",$INPUT_EMPTY_TO_NULL);
         $filter = getInput("filter");
-        $amount = getInput("amount",true);
-        $inputMode = getInput("inputMode",true);
+        $amount = getInput("amount",$INPUT_EMPTY_TO_NULL);
+        $inputMode = getInput("inputMode",$INPUT_EMPTY_TO_NULL | $INPUT_FALSE_TO_EMPTY);
 
         if (getInput("debug") == "1"){
             dieError("DEBUG",
