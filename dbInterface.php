@@ -81,7 +81,7 @@
             JOIN tsssff_card_set_link ON tsssff_savedcards2.editKey = tsssff_card_set_link.cardkey
             JOIN tsssff_sets ON tsssff_sets.editKey = tsssff_card_set_link.setkey
             WHERE tsssff_sets.${setMode}key='$key' AND tsssff_savedcards2.viewKey > '$minViewKey'
-            ORDER BY viewKey;
+            ORDER BY tsssff_savedcards2.viewKey;
         ";
 
         //XXX Add limitAmount back in
@@ -215,9 +215,9 @@
 
         if (amount !== null){
             if ($mode == "view"){
-                if ($setViewKey){
+                if ($setViewKey !== null){
                     print json_encode(getSet($viewKey,$amount,"view",$setViewKey));
-                } else if ($setEditKey){
+                } else if ($setEditKey !== null){
                     print json_encode(getSet($viewKey,$amount,"edit",$setEditKey));
                 } else {
                     print json_encode(getRange($viewKey,$amount,$filter));
