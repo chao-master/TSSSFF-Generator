@@ -54,9 +54,9 @@
                 $v = trim($v);
             }
         }
-        return {
+        return [
             "card" => $card
-        };
+        ];
     }
 
     function getRange($minViewKey,$amount,$filter){
@@ -69,9 +69,9 @@
         if (!$cards){
             dieError("Query error getting cards",pg_last_error());
         }
-        return {
+        return [
             "cards" => $cards
-        };
+        ];
     }
 
     function getSet($minViewKey,$amount,$setMode,$key){
@@ -104,10 +104,10 @@
             }
         }
 
-        return {
+        return [
             "cards" => $cards,
             "set" => $set
-        };
+        ];
     }
 
     function parseFilterString($filterString){
