@@ -74,6 +74,45 @@
         ];
     }
 
+    function getAddMode($minViewKey,$amount,$filter,$key){
+        $minViewKey = pg_escape_string($minViewKey);
+        $amount = pg_escape_string($amount);
+        $key = pg_escape_string($key);
+        $whereFilter = parseFilterString($filter);
+        $query = "
+            SELECT *,EXISTS(
+                SELECT 1 FROM tsssff_card_set_link WHERE cardkey = editkey AND setkey='$key'
+            ) AS inSet
+            FROM tsssff_savedcards2
+            WHERE viewKey > '$minViewKey' $whereFilter
+            ORDER BY viewKey LIMIT $amount;
+        ";
+        $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
+        $cards = pg_fetch_all($result);
+        if (!$cards){
+            dieError("Query error getting cards",pg_last_error());
+        }
+        return [
+            "cards" => $cards,
+            "set" => getSetInfo($setMode,$key)
+        ];
+    }
+
+    function getSetInfo($setMode,$key){
+        $setQuery = "SELECT editkey,viewkey,name,icon FROM tsssff_sets WHERE ${setMode}key='$key'";
+        $result = pg_query($setQuery) or dieError("Query error getting cards",pg_last_error());
+        $set = pg_fetch_assoc($result);
+        if ($set){
+            foreach($set as &$v){
+                $v = trim($v);
+            }
+        }
+        if ($setMode != "edit"){
+            unset($set["editkey"]);
+        }
+        return $set
+    }
+
     function getSet($minViewKey,$amount,$setMode,$key){
         $minViewKey = pg_escape_string($minViewKey);
         $amount = pg_escape_string($amount);
@@ -95,22 +134,9 @@
         if (!$cards){
             dieError("Query error getting cards",pg_last_error());
         }
-
-        $setQuery = "SELECT editkey,viewkey,name,icon FROM tsssff_sets WHERE ${setMode}key='$key'";
-        $result = pg_query($setQuery) or dieError("Query error getting cards",pg_last_error());
-        $set = pg_fetch_assoc($result);
-        if ($set){
-            foreach($set as &$v){
-                $v = trim($v);
-            }
-        }
-        if ($setMode != "edit"){
-            unset($set["editkey"]);
-        }
-
         return [
             "cards" => $cards,
-            "set" => $set
+            "set" => getSetInfo($setMode,$key)
         ];
     }
 
@@ -219,6 +245,7 @@
         $setEditKey = getInput("setEdit",true);
         $filter = getInput("filter");
         $amount = getInput("amount",true);
+        $inputMode = getInput("inputMode");
 
         if (getInput("debug") == "1"){
             dieError("DEBUG",
@@ -249,12 +276,20 @@
 
         if ($amount !== null){
             if ($mode == "view"){
-                if ($setViewKey !== null){
-                    print json_encode(getSet($viewKey,$amount,"view",$setViewKey));
-                } else if ($setEditKey !== null){
-                    print json_encode(getSet($viewKey,$amount,"edit",$setEditKey));
+                if ($inputMode){
+                    if ($setEditKey === null){
+                        dieError("Invalid Request","inputMode only valid with edit paramater");
+                    } else {
+                        getAddMode($viewKey,$amount,$filter,$setEditKey);
+                    }
                 } else {
-                    print json_encode(getRange($viewKey,$amount,$filter));
+                    if ($setViewKey !== null){
+                        print json_encode(getSet($viewKey,$amount,"view",$setViewKey));
+                    } else if ($setEditKey !== null){
+                        print json_encode(getSet($viewKey,$amount,"edit",$setEditKey));
+                    } else {
+                        print json_encode(getRange($viewKey,$amount,$filter));
+                    }
                 }
             } else {
                 dieError("amount parameter only valid with view parameter");
