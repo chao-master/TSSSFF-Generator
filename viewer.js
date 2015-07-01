@@ -6,8 +6,8 @@ function updateFilter(){
 
 $(document).on("state:adjust",function(event,get,oldGet){
     GET = get;
-    if (
-        get["filter"] != oldGet["filter"]
+    if ( oldGet["first"]
+        || get["filter"] != oldGet["filter"]
         || get["view"] != oldGet["view"]
         || get["edit"] != oldGet["edit"]
         || get["inputMode"] != oldGet["inputMode"]

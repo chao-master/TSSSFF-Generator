@@ -40,5 +40,5 @@ window.onpopstate = function(event){
 
 $(document).ready(function(){
     var GET = parseQuery();
-    $(document).trigger("state:adjust",[GET,{}]);
+    $(document).trigger("state:adjust",[GET,{"first":1}]);
 })
