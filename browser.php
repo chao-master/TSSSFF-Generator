@@ -111,11 +111,11 @@
             console.log(GET);
             $(document).ready(function() {
                 $.material.init();
-                $.extend(GET,{
+                GET = $.extend({
                     filter:"",
                     view:"",
                     edit:""
-                })
+                },GET)
                 loadMoreCards()
                 $("#more").click(loadMoreCards)
             });
