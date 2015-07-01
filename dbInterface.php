@@ -81,9 +81,6 @@
         JOIN tsssff_sets ON tsssff_sets.editKey = tsssff_card_set_link.setkey
         WHERE tsssff_sets.${setMode}key='$key' ORDER BY viewKey;";
 
-        print $query;
-
-
         //XXX Add limitAmount back in
         $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
         $cards = pg_fetch_all($result);
