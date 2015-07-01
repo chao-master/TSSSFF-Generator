@@ -92,7 +92,7 @@ function loadMoreCards(){
             })
 
             var chkBox = $("<input>").attr("type","checkbox");
-            if(i.inset){
+            if(i.inset == "t"){
                 chkBox.attr("checked","")
             }
 
