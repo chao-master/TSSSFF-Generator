@@ -76,6 +76,9 @@
         $key = pg_escape_string($key);
         $whereFilter = parseFilterString($filter);
         $query = "SELECT tsssff_savedcards2.viewKey,classes,tsssff_savedcards2.name,attr,image,copyright FROM tsssff_savedcards2,tsssff_card_set_link,tsssff_sets WHERE tsssff_sets.${setMode}key='$key' ORDER BY viewKey;";
+
+        print $query;
+
         //XXX Add limitAmount back in
         $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
         $cards = pg_fetch_all($result);
