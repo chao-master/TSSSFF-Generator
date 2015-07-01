@@ -227,6 +227,7 @@
         }
 
         if ($amount !== null){
+            if (getInput("debug") == "2"){dieError("range")}
             if ($mode == "view"){
                 if ($setViewKey !== null){
                     print json_encode(getSet($viewKey,$amount,"view",$setViewKey));
@@ -239,6 +240,7 @@
                 dieError("amount parameter only valid with view parameter");
             }
         } else {
+            if (getInput("debug") == "2"){dieError("card")}
             $card = getCard($mode,$_GET[$mode]);
             if (!$card){
                 $card = getCard("view","SPC-404");
