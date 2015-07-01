@@ -80,7 +80,7 @@
             FROM tsssff_savedcards2
             JOIN tsssff_card_set_link ON tsssff_savedcards2.editKey = tsssff_card_set_link.cardkey
             JOIN tsssff_sets ON tsssff_sets.editKey = tsssff_card_set_link.setkey
-            WHERE tsssff_sets.${setMode}key='$key' AND viewKey > '$minViewKey'
+            WHERE tsssff_sets.${setMode}key='$key' AND tsssff_savedcards2.viewKey > '$minViewKey'
             ORDER BY viewKey;
         ";
 
