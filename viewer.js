@@ -1,11 +1,13 @@
 var LAST_KEY = '0';
+var GET;
 function updateFilter(){
     updateFields
 }
 
 $(document).on("state:adjust",function(event,get,oldGet){
+    GET = get;
     if (get["filter"] != oldGet["filter"]){
-        $("#filter").val(GET["filter"]);
+        $("#filter").val(get["filter"]);
         LAST_KEY = '0';
         $("#viewTable tr:not(:first-child)").remove();
         loadMoreCards();
