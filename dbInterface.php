@@ -75,11 +75,14 @@
         $amount = pg_escape_string($amount);
         $key = pg_escape_string($key);
         $whereFilter = parseFilterString($filter);
-        $query = "SELECT tsssff_savedcards2.viewKey,classes,tsssff_savedcards2.name,attr,image,copyright
-        FROM tsssff_savedcards2
-        JOIN tsssff_card_set_link ON tsssff_savedcards2.editKey = tsssff_card_set_link.cardkey
-        JOIN tsssff_sets ON tsssff_sets.editKey = tsssff_card_set_link.setkey
-        WHERE tsssff_sets.${setMode}key='$key' ORDER BY viewKey;";
+        $query = "
+            SELECT tsssff_savedcards2.viewKey,classes,tsssff_savedcards2.name,attr,image,copyright
+            FROM tsssff_savedcards2
+            JOIN tsssff_card_set_link ON tsssff_savedcards2.editKey = tsssff_card_set_link.cardkey
+            JOIN tsssff_sets ON tsssff_sets.editKey = tsssff_card_set_link.setkey
+            WHERE tsssff_sets.${setMode}key='$key' AND viewKey > '$minViewKey'
+            ORDER BY viewKey;
+        ";
 
         //XXX Add limitAmount back in
         $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
