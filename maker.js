@@ -18,10 +18,11 @@ function mayError(errObj){
 function newCard(){
     $(".card").attr("class","card pony maleFemale unicorn s0");
     $(".card .nameInput").val("");
+    $(".card .name").text("");
     $(".card .attrs").val("");
     $(".card .effect").val("").change();
     $(".card .flavour").val("").change();
-    $(".card .copyright").val("");
+    $(".card .copyright").val("FAN CARD; TSSSF by Horrible People Games.");
     EDIT_KEY = null;
     document.location.hash = "";
     $("#editUrl,#shareUrl,#image").val("").change().addClass("empty")
