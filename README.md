@@ -1,5 +1,6 @@
 TSSSFF-Generator
 ================
+*(Because I didn't realise Sipfic was one word)*
 
 ## Using
 A live example can be found on [my website](http://ripppo.me/TSSSFF-Beta/) and is free to use for all Safe for work cards.
@@ -10,15 +11,12 @@ The tool is hopefully self explanatory:
  * Card types can be changed by hovering the card type on the left of the card.
  * Special symbols can be added with escapes such as `\earth` A full list is given below and on the page.
 
-##Credits and thanks.
+## Credits and thanks.
  * Majority of code is Written by [Ripp_ AKA chao-master](https://github.com/chao-master)
- * The legacy export system is modified off the official code by
-   * [Horrible People](https://github.com/HorriblePeople)
-   * Based off a fork by [Coandco](https://github.com/coandco)
-   * With help from [Latent Logic](https://github.com/Latent-Logic)
  * Special thanks also go to
-   * [Coandco](https://github.com/coandco) Again for helpful bug reports and
-   * [MrQuallzin](https://github.com/MrQuallzin) For bug reports and helping with the pony power quick inserts.
+   * [MrQuallzin](https://github.com/MrQuallzin) For bug reports and helping with the pony power quick inserts and
+   * [Coandco](https://github.com/coandco) for the temporary Export system.
+   * [Latent Logic](https://github.com/Latent-Logic)
 
 ## Forking
 You are welcome to fork the project and run your own instance in terms with the LICENSE.
@@ -30,6 +28,8 @@ To setup your own instance of the system you will need to read the **Creating th
 The system runs using psql and apache.
 
 ### Creating the table
+*(This section is incomplete)*
+
 At current the code is setup to use a psql database connection.
 
 The connection is currently hard coded in dbInterface.php to my connection details
