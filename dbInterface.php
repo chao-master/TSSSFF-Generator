@@ -79,6 +79,7 @@
 
         print $query;
 
+
         //XXX Add limitAmount back in
         $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
         $cards = pg_fetch_all($result);
@@ -90,9 +91,6 @@
 
     function parseFilterString($filterString){
         preg_match_all('#(?:([^":]+):)?("(?:\\\\\\\\.|[^\\\\\\\\"])*"|\\S+)#', $filterString, $matches, PREG_SET_ORDER);
-
-        $whereCause = "";
-
         foreach ($matches as $match){
             $field = strtolower($match[1]);
             $value = $match[2];
@@ -214,9 +212,9 @@
         if (amount !== null){
             if ($mode == "view"){
                 if ($setViewKey){
-                    print json_encode(getRange($viewKey,$amount,"view",$setViewKey));
+                    print json_encode(getSet($viewKey,$amount,"view",$setViewKey));
                 } else if ($setEditKey){
-                    print json_encode(getRange($viewKey,$amount,"edit",$setEditKey));
+                    print json_encode(getSet($viewKey,$amount,"edit",$setEditKey));
                 } else {
                     print json_encode(getRange($viewKey,$amount,$filter));
                 }
