@@ -36,7 +36,7 @@ function loadMoreCards(){
         var d = JSON.parse(r);
 
         if (LAST_KEY == "0"){
-            $("#viewTable tr:not(:first-child)").hide(function() {
+            $("#viewTable tr:not(:first-child)").slideUp(function() {
                 $(this).remove();
             });
         }
