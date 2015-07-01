@@ -4,17 +4,18 @@
     $USING = null;
     switch ($_SERVER['REQUEST_METHOD']){
         case "GET":
-            $USING = $_GET;
+            $USING = &$_GET;
             echo "GET";
             break;
         case "POST":
-            $USING = $_POST;
+            $USING = &$_POST;
             echo "POST";
             break;
         default:
             dieError("Invalid Method","Only GET and POST supported");
             break;
     }
+    var_dump($USING);
 
     function getInput($key,$emptyToNull=false){
         var_dump($USING);
