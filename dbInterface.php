@@ -211,9 +211,9 @@
         if (amount !== null){
             if ($mode == "view"){
                 if ($setViewKey){
-                    print json_encode(getRange($viewKey,$amount,"view",$setViewKey))
+                    print json_encode(getRange($viewKey,$amount,"view",$setViewKey));
                 } else if ($setEditKey){
-                    print json_encode(getRange($viewKey,$amount,"edit",$setEditKey))
+                    print json_encode(getRange($viewKey,$amount,"edit",$setEditKey));
                 } else {
                     print json_encode(getRange($viewKey,$amount,$filter));
                 }
