@@ -104,7 +104,7 @@
             }
         }
         if ($setMode != "edit"){
-            unset(set["editkey"])
+            unset($set["editkey"]);
         }
 
         return [
