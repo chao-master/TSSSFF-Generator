@@ -96,7 +96,7 @@
         <script src="viewer.js"></script>
         <script>
             var queries = document.location.search.substring(1).split("&");
-            GET = [];
+            GET = {};
             for(var i=0;i<queries.length;i++){
                 var q = queries[i],
                     eAt = q.indexOf("=");
