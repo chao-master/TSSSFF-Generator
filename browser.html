@@ -88,10 +88,6 @@
         <script src="state.js"></script>
         <script src="viewer.js"></script>
         <script>
-            $(document).on("state:first",function(event,get){
-                $("#filter").val(get["filter"]);
-            })
-
             $(document).ready(function() {
                 $.material.init();
                 $("#more").click(loadMoreCards)
