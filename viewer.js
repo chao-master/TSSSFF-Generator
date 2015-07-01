@@ -36,7 +36,9 @@ function loadMoreCards(){
         var d = JSON.parse(r);
 
         if (LAST_KEY == "0"){
-            $("#viewTable tr:not(:first-child)").remove();
+            $("#viewTable tr:not(:first-child)").hide(function() {
+                $(this).remove();
+            });
         }
 
         LAST_KEY = d.cards[d.cards.length-1].viewkey
