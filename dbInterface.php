@@ -5,22 +5,17 @@
     switch ($_SERVER['REQUEST_METHOD']){
         case "GET":
             $USING = &$_GET;
-            echo "GET";
             break;
         case "POST":
             $USING = &$_POST;
-            echo "POST";
             break;
         default:
             dieError("Invalid Method","Only GET and POST supported");
             break;
     }
-    var_dump($USING);
 
     function getInput($key,$emptyToNull=false){
-        var_dump($USING);
-        echo $key;
-        echo $USING[$key];
+        global $USING;
         if(array_key_exists($key,$USING)){
             $rtn = $USING[$key];
             if ($emptyToNull && $rtn === ""){
