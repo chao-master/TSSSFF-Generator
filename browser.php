@@ -1,9 +1,3 @@
-<?php
-    $filter = $_GET["filter"] or "";
-    $edit = $_GET["edit"] or "";
-    $view = $_GET["view"] or "";
-?>
-
 <html>
     <head>
         <title>TSSSFF Card Generator</title>
@@ -38,10 +32,8 @@
                             Filter Cards
                         </div>
                         <div class="panel-body">
-                            <form>
-                                <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter" value="<?=htmlspecialchars($filter)?>"/>
-                                <button class="btn btn-primary" type="submit">Filter</button>
-                            </form>
+                            <input class="form-control floating-label" type="text" id="filter" name="filter" placeholder="Filter"/>
+                            <button class="btn btn-primary" id="applyFilter">Filter</button>
                         </div>
                     </div>
                 </div>
@@ -110,14 +102,18 @@
             }
             console.log(GET);
             $(document).ready(function() {
-                $.material.init();
                 GET = $.extend({
                     filter:"",
                     view:"",
                     edit:""
                 },GET)
+                if(GET["filter"]){
+                    $("#filter").val(GET["filter"]);
+                }
+                $.material.init();
                 loadMoreCards()
                 $("#more").click(loadMoreCards)
+                $("#filterApply").click(updateFilter)
             });
         </script>
     </body>
