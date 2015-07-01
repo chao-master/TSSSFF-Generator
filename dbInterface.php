@@ -94,7 +94,7 @@
         }
         return [
             "cards" => $cards,
-            "set" => getSetInfo($setMode,$key)
+            "set" => getSetInfo("edit",$key)
         ];
     }
 
