@@ -29,7 +29,7 @@ function updateQuery(){
 }
 
 GET = {};
-function popevent(event){
+window.onpopevent = function(event){
     GET = $.extend({
         filter:"",
         view:"",
@@ -38,8 +38,6 @@ function popevent(event){
     $("#filter").val(GET["filter"]);
     updateFilter();
 }
-
-window.onpopevent = popevent;
 
 function updateFilter(){
     GET["filter"] = $("#filter").val();
