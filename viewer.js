@@ -3,7 +3,7 @@ var LAST_KEY = '0';
 function updateFilter(){
     GET["filter"] = $("#filter").val();
     LAST_KET = '0';
-    $("#tableView tr:not(:first-child)").remove();
+    $("#viewTable tr:not(:first-child)").remove();
     loadMoreCards();
 }
 
