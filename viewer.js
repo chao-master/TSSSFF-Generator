@@ -14,7 +14,6 @@ $(document).on("state:adjust",function(event,get,oldGet){
     ){
         $("#filter").val(get["filter"]);
         LAST_KEY = '0';
-        $("#viewTable tr:not(:first-child)").remove();
         loadMoreCards();
     }
     if ( get["inputMode"] != oldGet["inputMode"]){
@@ -35,6 +34,11 @@ function loadMoreCards(){
         "inputMode":GET["inputMode"]
     },function(r){
         var d = JSON.parse(r);
+
+        if (LAST_KEY == "0"){
+            $("#viewTable tr:not(:first-child)").remove();
+        }
+
         LAST_KEY = d.cards[d.cards.length-1].viewkey
 
         if (d.set){
