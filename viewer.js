@@ -6,12 +6,17 @@ function updateFilter(){
 
 $(document).on("state:adjust",function(event,get,oldGet){
     GET = get;
-    if (get["filter"] != oldGet["filter"]){
+    if (
+        get["filter"] != oldGet["filter"]
+        || get["view"] != oldGet["view"]
+        || get["edit"] != oldGet["edit"]
+    ){
         $("#filter").val(get["filter"]);
         LAST_KEY = '0';
         $("#viewTable tr:not(:first-child)").remove();
         loadMoreCards();
     }
+
 })
 
 function loadMoreCards(){
