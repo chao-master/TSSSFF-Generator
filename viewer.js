@@ -32,14 +32,16 @@ function loadMoreCards(){
         var d = JSON.parse(r);
         LAST_KEY = d.cards[d.cards.length-1].viewkey
 
-        if (d.set.editkey){
-            $("#editUrl").val(document.location.origin + document.location.pathname + "?edit="+d.set.editkey);
-        } else {
-            $("#editUrl").val("cannot edit")
+        if (d.set){
+            if (d.set.editkey){
+                $("#editUrl").val(document.location.origin + document.location.pathname + "?edit="+d.set.editkey);
+            } else {
+                $("#editUrl").val("cannot edit")
+            }
+            $("#shareUrl").val(document.location.origin + document.location.pathname + "?view="+d.set.viewkey);
+            $("#editUrl,#shareUrl").removeClass("empty")
         }
-        $("#shareUrl").val(document.location.origin + document.location.pathname + "?view="+d.set.viewkey);
-        $("#editUrl,#shareUrl").removeClass("empty")
-        
+
         $.each(d.cards,function(_,i){
             var key = i.viewkey;
 
