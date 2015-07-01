@@ -18,10 +18,16 @@ The tool is hopefully self explanatory:
    * [Coandco](https://github.com/coandco) for the temporary Export system.
    * [Latent Logic](https://github.com/Latent-Logic)
 
-## Forking
-You are welcome to fork the project and run your own instance in terms with the LICENSE.
+## Forking & Cloning
+You are welcome to clone/fork the project and run your own instance in terms with the LICENSE.
 
 It would be nice if improvements are feed back into the main project with Pull requests but it is not necessary to do so.
+
+After cloning the project you will need to update the submodules
+```
+git submodule init
+git submodule update
+```
 
 To setup your own instance of the system you will need to read the **Creating the table** and **Adding Special cards** sections below.
 
