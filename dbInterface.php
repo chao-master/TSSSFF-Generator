@@ -110,7 +110,7 @@
         if ($setMode != "edit"){
             unset($set["editkey"]);
         }
-        return $set
+        return $set;
     }
 
     function getSet($minViewKey,$amount,$setMode,$key){
