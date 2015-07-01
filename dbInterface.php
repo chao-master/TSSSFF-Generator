@@ -261,7 +261,8 @@
                     "setViewKey" => $setViewKey,
                     "setEditKey" => $setEditKey,
                     "filter" => $filter,
-                    "amount" => $amount
+                    "amount" => $amount,
+                    "inputMode" => $inputMode
                 ]
             );
         }
