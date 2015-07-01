@@ -70,6 +70,21 @@
         return $cards;
     }
 
+    function getSet($minViewKey,$amount,$setMode,$key){
+        $minViewKey = pg_escape_string($minViewKey);
+        $amount = pg_escape_string($amount);
+        $key = pg_escape_string($key);
+        $whereFilter = parseFilterString($filter);
+        $query = "SELECT tsssff_savedcards2.viewKey,classes,tsssff_savedcards2.name,attr,image,copyright FROM tsssff_savedcards2,tsssff_card_set_link,tsssff_sets WHERE tsssff_sets.${setMode}key='$key' ORDER BY viewKey;"
+        //XXX Add limitAmount back in
+        $result = pg_query($query) or dieError("Query error getting cards",pg_last_error());
+        $cards = pg_fetch_all($result);
+        if (!$cards){
+            dieError("Query error getting cards",pg_last_error());
+        }
+        return $cards;
+    }
+
     function parseFilterString($filterString){
         preg_match_all('#(?:([^":]+):)?("(?:\\\\\\\\.|[^\\\\\\\\"])*"|\\S+)#', $filterString, $matches, PREG_SET_ORDER);
 
@@ -195,7 +210,13 @@
 
         if (amount !== null){
             if ($mode == "view"){
-                print json_encode(getRange($_GET["view"],$_GET["amount"],$filter));
+                if ($setViewKey){
+                    print json_encode(getRange($viewKey,$amount,"view",$setViewKey))
+                } else if ($setEditKey){
+                    print json_encode(getRange($viewKey,$amount,"edit",$setEditKey))
+                } else {
+                    print json_encode(getRange($viewKey,$amount,$filter));
+                }
             } else {
                 dieError("amount parameter only valid with view parameter");
             }
