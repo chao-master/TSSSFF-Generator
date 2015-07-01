@@ -10,6 +10,7 @@ $(document).on("state:adjust",function(event,get,oldGet){
         get["filter"] != oldGet["filter"]
         || get["view"] != oldGet["view"]
         || get["edit"] != oldGet["edit"]
+        || get["inputMode"] != oldGet["inputMode"]
     ){
         $("#filter").val(get["filter"]);
         LAST_KEY = '0';
@@ -25,7 +26,8 @@ function loadMoreCards(){
         "amount":50,
         "filter":GET["filter"],
         "setView":GET["view"],
-        "setEdit":GET["edit"]
+        "setEdit":GET["edit"],
+        "inputMode":GET["inputMode"]
     },function(r){
         var d = JSON.parse(r);
         LAST_KEY = d.cards[d.cards.length-1].viewkey

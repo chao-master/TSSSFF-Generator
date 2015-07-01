@@ -46,7 +46,7 @@
                             <button class="btn">New set</button>
                             <span class="togglebutton">
                                 <label>Input mode
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" id="inputMode"/>
                                 </label>
                             </span>
                             <div class="form-group">
@@ -93,6 +93,9 @@
                 $("#more").click(loadMoreCards)
                 $("#applyFilter").click(function(){
                     updateFields({"filter":$("#filter").val()})
+                })
+                $("#inputMode").click(function(){
+                    updateFields({"inputMode":$("#inputMode").prop("checked")})
                 })
             });
         </script>
