@@ -37,8 +37,9 @@ function loadMoreCards(){
         } else {
             $("#editUrl").val("cannot edit")
         }
-        $("#viewUrl").val(document.location.origin + document.location.pathname + "?view="+d.set.viewkey);
-
+        $("#shareUrl").val(document.location.origin + document.location.pathname + "?view="+d.set.viewkey);
+        $("#editUrl,#shareUrl").removeClass("empty")
+        
         $.each(d.cards,function(_,i){
             var key = i.viewkey;
 
