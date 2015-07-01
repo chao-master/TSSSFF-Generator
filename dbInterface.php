@@ -199,6 +199,19 @@
         $filter = getInput("filter");
         $amount = getInput("amount",true);
 
+        if (getInput("debug") == "1"){
+            dieError("DEBUG",
+                [
+                    "editKey" => $editKey,
+                    "viewKey" => $viewKey,
+                    "setViewKey" => $setViewKey,
+                    "setEditKey" => $setEditKey,
+                    "filter" => $filter,
+                    "amount" => $amount
+                ]
+            )
+        }
+
         if ($editKey !== null){
             if ($viewKey !== null){
                 dieError("Invalid request","Both edit and view parameters given");
