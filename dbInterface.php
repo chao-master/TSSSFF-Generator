@@ -209,7 +209,7 @@
                     "filter" => $filter,
                     "amount" => $amount
                 ]
-            )
+            );
         }
 
         if ($editKey !== null){
