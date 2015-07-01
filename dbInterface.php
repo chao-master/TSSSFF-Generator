@@ -280,7 +280,7 @@
                     if ($setEditKey === null){
                         dieError("Invalid Request","inputMode only valid with edit paramater");
                     } else {
-                        getAddMode($viewKey,$amount,$filter,$setEditKey);
+                        print json_encode(getAddMode($viewKey,$amount,$filter,$setEditKey));
                     }
                 } else {
                     if ($setViewKey !== null){
