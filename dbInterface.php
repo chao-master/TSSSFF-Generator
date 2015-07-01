@@ -20,9 +20,6 @@
         global $USING, $INPUT_EMPTY_TO_NULL, $INPUT_FALSE_TO_EMPTY;
         if(array_key_exists($key,$USING)){
             $rtn = $USING[$key];
-            print $flags;
-            print ($flags & $INPUT_FALSE_TO_EMPTY);
-            print ($flags & $INPUT_EMPTY_TO_NULL);
             if (($flags & $INPUT_FALSE_TO_EMPTY) && $rtn === "false"){
                 $rtn = "";
             }
