@@ -54,7 +54,9 @@
                 $v = trim($v);
             }
         }
-        return $card;
+        return {
+            "card" => $card
+        };
     }
 
     function getRange($minViewKey,$amount,$filter){
@@ -67,7 +69,9 @@
         if (!$cards){
             dieError("Query error getting cards",pg_last_error());
         }
-        return $cards;
+        return {
+            "cards" => $cards
+        };
     }
 
     function getSet($minViewKey,$amount,$setMode,$key){
@@ -90,7 +94,20 @@
         if (!$cards){
             dieError("Query error getting cards",pg_last_error());
         }
-        return $cards;
+
+        $setQuery = "SELECT editkey,viewkey,name,icon FROM tsssff_sets WHERE ${setMode}key='$key'";
+        $result = pg_query($setQuery) or dieError("Query error getting cards",pg_last_error());
+        $set = pg_fetch_assoc($result);
+        if ($set){
+            foreach($set as &$v){
+                $v = trim($v);
+            }
+        }
+
+        return {
+            "cards" => $cards,
+            "set" => $set
+        };
     }
 
     function parseFilterString($filterString){

@@ -38,13 +38,13 @@ function load(kind,id){
         $(".card button").each(function(){
             $(".card").removeClass($(this).attr("value"))
         })
-        $(".card").addClass(d.classes);
-        $(".card .nameInput").val(d.name).change();
-        $(".card .attrs").val(d.attr);
-        $(".card .effect").val(d.effect);
-        $(".card .flavour").val(d.flavour);
-        $("#image").val(d.image).change();
-        $(".card .copyright").val(d.copyright);
+        $(".card").addClass(d.card.classes);
+        $(".card .nameInput").val(d.card.name).change();
+        $(".card .attrs").val(d.card.attr);
+        $(".card .effect").val(d.card.effect);
+        $(".card .flavour").val(d.card.flavour);
+        $("#image").val(d.card.image).change();
+        $(".card .copyright").val(d.card.copyright);
         $(".card textarea").change();
 
         document.location.hash = "."

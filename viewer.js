@@ -29,7 +29,7 @@ function loadMoreCards(){
     },function(r){
         var d = JSON.parse(r);
         LAST_KEY = d[d.length-1].viewkey
-        $.each(d,function(_,i){
+        $.each(d.cards,function(_,i){
             var key = i.viewkey;
 
             //Build the icon sets
