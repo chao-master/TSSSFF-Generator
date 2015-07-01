@@ -28,7 +28,7 @@ function loadMoreCards(){
         "setEdit":GET["edit"]
     },function(r){
         var d = JSON.parse(r);
-        LAST_KEY = d[d.length-1].viewkey
+        LAST_KEY = d[d.cards.length-1].viewkey
         $.each(d.cards,function(_,i){
             var key = i.viewkey;
 
