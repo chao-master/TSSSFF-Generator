@@ -85,21 +85,19 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/ripples.min.js"></script>
         <script src="js/material.min.js"></script>
+        <script src="state.js"></script>
         <script src="viewer.js"></script>
         <script>
+            $(document).on("state:first",function(event,get){
+                $("#filter").val(get["filter"]);
+            })
+
             $(document).ready(function() {
-                GET = $.extend({
-                    filter:"",
-                    view:"",
-                    edit:""
-                },GET)
-                if(GET["filter"]){
-                    $("#filter").val(GET["filter"]);
-                }
                 $.material.init();
-                loadMoreCards()
                 $("#more").click(loadMoreCards)
-                $("#applyFilter").click(updateFilter)
+                $("#applyFilter").click(function(){
+                    updateFields({"filter":$("#filter").val()})
+                })
             });
         </script>
     </body>

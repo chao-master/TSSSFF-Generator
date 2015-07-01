@@ -1,51 +1,16 @@
 var LAST_KEY = '0';
-
-function parseQuery(){
-    var queries = document.location.search.substring(1).split("&");
-    var parsed = {};
-    for(var i=0;i<queries.length;i++){
-        var q = queries[i],
-            eAt = q.indexOf("=");
-        if (eAt == -1){
-            parsed[q] = null;
-        } else {
-            var k = q.substr(0,eAt),
-                v = q.substr(eAt+1);
-            parsed[k] = v
-        }
-    }
-    return parsed;
-}
-
-function updateQuery(){
-    var query = $.map(GET,function(v,k){
-        if (v){
-            return k+"="+v
-        } else {
-            return
-        }
-    }).join("&")
-    history.pushState({},"",document.location.pathname+"?"+query)
-}
-
-GET = {};
-window.onpopstate = function(event){
-    GET = $.extend({
-        filter:"",
-        view:"",
-        edit:""
-    },parseQuery());
-    $("#filter").val(GET["filter"]);
-    updateFilter();
-}
-
 function updateFilter(){
-    GET["filter"] = $("#filter").val();
-    LAST_KEY = '0';
-    $("#viewTable tr:not(:first-child)").remove();
-    updateQuery();
-    loadMoreCards();
+    updateFields
 }
+
+$(document).on("state:adjust",function(event,get,oldGet){
+    if (get["filter"] != oldGet["filter"]){
+        $("#filter").val(GET["filter"]);
+        LAST_KEY = '0';
+        $("#viewTable tr:not(:first-child)").remove();
+        loadMoreCards();
+    }
+})
 
 function loadMoreCards(){
     $.get("dbInterface.php",{
