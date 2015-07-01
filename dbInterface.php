@@ -219,10 +219,10 @@
                     print "\\setView $viewKey,$amount,"view",$setViewKey";
                     print json_encode(getSet($viewKey,$amount,"view",$setViewKey));
                 } else if ($setEditKey !== null){
-                    print "\\getView $viewKey,$amount,"edit",$setEditKey"
+                    print "\\getView $viewKey,$amount,"edit",$setEditKey";
                     print json_encode(getSet($viewKey,$amount,"edit",$setEditKey));
                 } else {
-                    print "\\getRange $viewKey,$amount,$filter"
+                    print "\\getRange $viewKey,$amount,$filter";
                     print json_encode(getRange($viewKey,$amount,$filter));
                 }
             } else {
