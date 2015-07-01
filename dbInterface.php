@@ -17,7 +17,7 @@
     $INPUT_EMPTY_TO_NULL = 1;
     $INPUT_FALSE_TO_EMPTY = 2;
     function getInput($key,$flags){
-        global $USING;
+        global $USING, $INPUT_EMPTY_TO_NULL, $INPUT_FALSE_TO_EMPTY;
         if(array_key_exists($key,$USING)){
             $rtn = $USING[$key];
             print $flags;
