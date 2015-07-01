@@ -245,7 +245,7 @@
         $setEditKey = getInput("setEdit",true);
         $filter = getInput("filter");
         $amount = getInput("amount",true);
-        $inputMode = getInput("inputMode");
+        $inputMode = getInput("inputMode",true);
 
         if (getInput("debug") == "1"){
             dieError("DEBUG",
