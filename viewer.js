@@ -31,6 +31,14 @@ function loadMoreCards(){
     },function(r){
         var d = JSON.parse(r);
         LAST_KEY = d.cards[d.cards.length-1].viewkey
+
+        if (d.set.editkey){
+            $("#editUrl").val(document.location.origin + document.location.pathname + "?edit="+d.set.editkey);
+        } else {
+            $("#editUrl").val("cannot edit")
+        }
+        $("#viewUrl").val(document.location.origin + document.location.pathname + "?view="+d.set.viewkey);
+
         $.each(d.cards,function(_,i){
             var key = i.viewkey;
 
