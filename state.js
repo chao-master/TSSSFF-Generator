@@ -29,7 +29,7 @@ function updateFields(newGet,supressEvent){
         }
     }).join("&");
     history.pushState({},"",document.location.pathname+"?"+query)
-    if (!suppressEvent){
+    if (!supressEvent){
         $(document).trigger("state:adjust",[GET,oldGet]);
     }
 }
