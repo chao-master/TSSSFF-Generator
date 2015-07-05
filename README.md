@@ -1,6 +1,10 @@
 TSSSFF-Generator
 ================
 
+Also see The projects forks:
+ * [TSSSF-App](https://github.com/chao-master/TSSSF-App): A webapp/offline/mobile version
+ * [TSSSF-Frontend](https://github.com/coandco/TSSSF-Frontend): Fork Utilizing the frontend to connect to [CardMachine](https://github.com/HorriblePeople/CardMachine)
+
 ## Using
 A live example can be found on [my website](http://ripppo.me/TSSSFF-Beta/) and is free to use for all Safe for work cards.
 
