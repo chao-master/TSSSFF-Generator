@@ -11,48 +11,6 @@ function mayError(errObj){
     }
 }
 
-//Blanks the cards
-function newCard(){
-    var blankCard = LZString.compressToBase64(JSON.stringify({
-        classes: "card pony maleFemale unicorn s0",
-        name: "",
-        attrs: "",
-        effect: "",
-        flavour: "",
-        copyright: "",
-    }))
-    updateFields({card:blankCard})
-}
-
-//Loads a card
-function load(string){
-    var data = JSON.parse(LZString.decompressFromBase64(string))
-    $(".card").attr("class",data.classes)
-    $(".card .nameInput").val(data.name).change()
-    $(".card .attrs").val(data.attrs)
-    $(".card .effect").val(data.effect)
-    $(".card .flavour").val(data.flavour).change()
-    $(".card .copyright").val(data.copyright).change()
-}
-$(document).on("state:adjust",function(event,get,oldGet){
-    if (get.card != oldGet.card){
-        load(get.card)
-    }
-})
-
-//Saves a card
-function save(){
-    var newString = LZString.compressToBase64(JSON.stringify({
-        classes: $(".card").attr("class"),
-        name: $(".card .nameInput").val(),
-        attrs: $(".card .attrs").val(),
-        effect: $(".card .effect").val(),
-        flavour: $(".card .flavour").val(),
-        copyright: $(".card .copyright").val(),
-    }))
-    updateFields({card:newString},true)
-}
-
 function cardSetup(){
     //On card button clicks, remove other classes and add new ones.
     //Unless it is changeling, special case, just toggle.
@@ -134,10 +92,6 @@ function cardSetup(){
     $("#image").change(function(){
         $(".card .image").css("background-image","url('"+$(this).val()+"')")
     })
-
-    //Save, New & Export buttons
-    $("#save").click(save)
-    $("#new").click(newCard)
 
     //Inital call setup functions
     $(window).resize();
