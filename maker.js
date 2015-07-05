@@ -36,7 +36,7 @@ function cardSetup(){
     });
 
     //Add Hidden File Input click cascade
-    $(".card .image").click(function(e){
+    $(".card .image .upload").click(function(e){
         $("#uploadImage").click()
     })
 

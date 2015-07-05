@@ -83,16 +83,6 @@
         background:transparent;
         resize: none;
     }
-    .card .image {
-        position:absolute;
-        left: 122px;
-        top:  161px;
-        width: 601px;
-        height: 444px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
     .card .nameInput, .card .name {
         position:absolute;
         bottom: 952px;
@@ -155,6 +145,28 @@
         font-size: 18px;
         text-align: right;
         right: 37px;
+    }
+
+/* Card Image */
+    .card .image {
+        position:absolute;
+        left: 122px;
+        top:  161px;
+        width: 601px;
+        height: 444px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .card .image .upload {
+        font-size:50px;
+        position:absolute;
+        right:0;
+        bottom:0;
+        display:none;
+    }
+    .card .image:hover .upload{
+        display:block;
     }
 
 /* Icon Generics */
