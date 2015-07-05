@@ -35,6 +35,11 @@ function cardSetup(){
         $(".cardwrapper").height(1088*f);
     });
 
+    //Add Hidden File Input click cascade
+    $(".hiddenFileInput .btn").click(function(e){
+        $(this).next().click()
+    })
+
     //Constant infomation for special escape code handling.
     var SPECIAL_REGEX = /\\(malefemale|unicorn|pegasus|earth|alicorn|goal|time|female|male|ship|replace|swap|draw|newgoal|search|copy|changeling)/g
     var SPECIAL_REPLACE = {
@@ -67,7 +72,7 @@ function cardSetup(){
 
     //Replace and create tooltip hints
     $.each(SPECIAL_REPLACE,function(key,replace){
-        $("dt[data-original-title='\\"+key+"']").attr("data-original-title",replace).tooltip();
+        $("dt[data-original-title='"+key+"']").attr("data-original-title",replace).tooltip();
     })
 
     //When a text editor is updated resize it's helper to clone back the height.
@@ -88,22 +93,13 @@ function cardSetup(){
         o.text(t.val());
     });
 
-    //Update image
+    /*/Update image
     $("#image").change(function(){
         $(".card .image").css("background-image","url('"+$(this).val()+"')")
-    })
+    })*/
+
 
     //Inital call setup functions
     $(window).resize();
     $(".card textarea").change();
-
-    //Check the hash to see if we are loading something
-    if(document.location.hash){
-        hs = document.location.hash.substr(1).split(":")
-        if (hs.length==2 && (hs[0] == "view" || hs[0] == "edit")){
-            load(hs[0],hs[1]);
-        } else {
-            document.location.hash = ""
-        }
-    }
 };

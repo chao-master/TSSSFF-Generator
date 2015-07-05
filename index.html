@@ -21,6 +21,9 @@
             #exportImg {
                 display:none;
             }
+            .hiddenFileInput input[type=file]{
+                display:none;
+            }
         </style>
     </head>
     <body>
@@ -91,14 +94,12 @@
                         <div class="panel-body">
                             <p>
                                 Feel free to check out and fork the source on <a href="https://github.com/chao-master/TSSSFF-Generator">github</a><br/>
-                                Cards may be lost but I will try not to let that happen.
                             </p>
-                            <div class="form-group">
-                                <input class="form-control floating-label" type="text" id="image" placeholder="Card Image" required/>
-                            </div>
 
-                            <button id="save" class="btn btn-success">Save</button>
-                            <button id="new" class="btn btn-primary">New</button>
+                            <div class="hiddenFileInput">
+                                <button class="btn btn-primary " id="image">Upload Image</button>
+                                <input type="file"/>
+                            </div>
 
                             <div class="btn-group">
                                 <a id="canvasExport" class="btn btn-warning">Export
