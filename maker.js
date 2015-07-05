@@ -34,6 +34,11 @@ function load(string){
     $(".card .flavour").val(data.flavour)
     $(".card .copyright").val(data.copyright)
 }
+$(document).on("state:adjust",function(event,get,oldGet){
+    if (get.card != oldGet.card){
+        load(get.card)
+    }
+})
 
 //Saves a card
 function save(){
@@ -45,7 +50,7 @@ function save(){
         flavour: $(".card .flavour").val(),
         copyright: $(".card .copyright").val(),
     }))
-    updateFields({card:newString})
+    updateFields({card:newString},true)
 }
 
 function cardSetup(){
