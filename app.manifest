@@ -1,0 +1,64 @@
+CACHE MANIFEST
+
+#5/Jul 14:57
+
+CACHE:
+#App Pages
+index.html
+cardStyling.css
+generator.js
+maker.js
+state.js
+
+#Layout CSS
+css/bootstrap.min.css
+css/material-wfont.min.css
+css/font-awesome.min.css
+css/material.min.css
+css/ripples.min.css
+
+#Libaries
+js/lz-string.min.js
+js/bootstrap.min.js
+js/material.min.js
+js/ripples.min.js
+js/jquery-1.11.3.min.js
+
+#Resources: Symbols
+resources/symbols/Symbol-MaleFemale.png
+resources/symbols/Symbol-ChangelingPegasus.png
+resources/symbols/symbol-23.png
+resources/symbols/symbol-1.png
+resources/symbols/Symbol-Pegasus.png
+resources/symbols/Symbol-Female.png
+resources/symbols/Symbol-Alicorn.png
+resources/symbols/symbol-2.png
+resources/symbols/Symbol-ChangelingEarthPony.png
+resources/symbols/symbol-3.png
+resources/symbols/Symbol-Ship.png
+resources/symbols/Symbol-Goal.png
+resources/symbols/Symbol-Earth-Pony.png
+resources/symbols/symbol-dystopian-future.png
+resources/symbols/symbol-4.png
+resources/symbols/Symbol-ChangelingAlicorn.png
+resources/symbols/Symbol-ChangelingUnicorn.png
+resources/symbols/symbol-0.png
+resources/symbols/Symbol-male.png
+resources/symbols/Symbol-Unicorn.png
+resources/symbols/symbol-34.png
+
+#Resources: Card Blanks
+resources/templates/BLEED-Blank-Start-cropped.png
+resources/templates/BLEED-Blank-Goal-cropped.png
+resources/templates/BLEED-Blank-Pony-cropped.png
+resources/templates/BLEED-Blank-Ship-cropped.png
+resources/bleed%20templates/BLEED-Blank-Pony-bleed.png
+resources/bleed%20templates/BLEED-Blank-Goal-bleed.png
+resources/bleed%20templates/BLEED-Blank-Ship-bleed.png
+resources/bleed%20templates/BLEED-Blank-Start-bleed.png
+
+#Resoucres: Fonts
+resources/fonts/TSSSFCabin-Medium.ttf
+resources/fonts/KlinicSlabBookIt.otf
+resources/fonts/TSSSFBartholomew-Bold.otf
+resources/fonts/PackardAntique-Bold.ttf
