@@ -22,7 +22,7 @@
             #exportImg {
                 display:none;
             }
-            .hiddenFileInput input[type=file]{
+            #uploadImage{
                 display:none;
             }
         </style>
@@ -96,11 +96,7 @@
                             <p>
                                 Feel free to check out and fork the source on <a href="https://github.com/chao-master/TSSSFF-Generator">github</a><br/>
                             </p>
-
-                            <span class="hiddenFileInput">
-                                <button class="btn btn-primary" id="image">Upload Image</button>
-                                <input type="file"/>
-                            </span>
+                            <input id="uploadImage" type="file"/>
 
                             <div class="btn-group">
                                 <a id="canvasExport" class="btn btn-warning">Export
@@ -125,13 +121,7 @@
                                 <strong></strong>
                                 <em></em>
                             </div>
-
-                            <div class="form-group">
-                                <input class="form-control floating-label" type="text" id="editUrl" placeholder="Edit link: (lets you modify this copy of the card, keep secret)" readonly/>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control floating-label" type="text" id="shareUrl" placeholder="Sharing Link:" readonly/>
-                            </div>
+                            <br>
                             Symbols and Powers Guide:
                             <div class=row>
                                 <div class="col-xs-6">

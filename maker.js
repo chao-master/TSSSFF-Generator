@@ -36,12 +36,12 @@ function cardSetup(){
     });
 
     //Add Hidden File Input click cascade
-    $(".hiddenFileInput .btn").click(function(e){
-        $(this).next().click()
+    $(".card .image").click(function(e){
+        $("#uploadImage").click()
     })
 
     //Load image
-    $(".hiddenFileInput input[type=file]").change(function(){
+    $("#uploadImage").change(function(){
         var file = this.files[0];
         var reader = new FileReader();
         reader.onload = function(e) {
