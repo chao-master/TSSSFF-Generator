@@ -38,7 +38,17 @@ function cardSetup(){
     //Add Hidden File Input click cascade
     $(".hiddenFileInput .btn").click(function(e){
         $(this).next().click()
-    })q
+    })
+
+    //Load image
+    $(".hiddenFileInput input[type=file]").change(function(){
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+			console.log(reader)
+        }
+        reader.readAsDataURL(file);
+    })
 
     //Constant infomation for special escape code handling.
     var SPECIAL_REGEX = /\\(malefemale|unicorn|pegasus|earth|alicorn|goal|time|female|male|ship|replace|swap|draw|newgoal|search|copy|changeling)/g
