@@ -122,7 +122,7 @@ function drawCardElement(after){
 }
 
 function redraw(){
-    $(".card").css("transform","")
+    $(".card").css("transform","").css("visibility","hidden")
 
 
     drawCardElement(function(){
@@ -136,6 +136,7 @@ function redraw(){
                     toDo--;
                     if(!toDo){
                         $(window).resize();
+                        $(".card").css("visibility","")
                     }
                 });
             })
