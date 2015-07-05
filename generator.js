@@ -68,9 +68,6 @@ function drawImageElement(element,after,src){
         if(after){after()}
         return;
     }
-    if (!src.match(document.location.origin) && src.match(/https?:\/\//)){
-        src = "imgProxy.php?img="+encodeURIComponent(src)
-    }
     img.onload = function() {
         var sWidth = img.width,
             sHeight = img.height,
@@ -90,7 +87,7 @@ function drawImageElement(element,after,src){
     img.onerror = function(){
         mayError({
             error:"Failed to load card art",
-            details:"If the image otherwise loads normally then the server has CROS disabled. Try a host like imgur which doesn't, or derpibooru which is specially allowed."
+            details:"Try reloading the image"
         })
         if(after){after()}
     }
@@ -164,4 +161,5 @@ $(document).ready(function(){
     }).change();
 
     $("#bleedCard,#image").change(redraw)
+    redraw();
 })
