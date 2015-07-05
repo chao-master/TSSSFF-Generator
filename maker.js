@@ -45,7 +45,8 @@ function cardSetup(){
         var file = this.files[0];
         var reader = new FileReader();
         reader.onload = function(e) {
-			console.log(reader)
+			console.log(reader);
+            $(".card .image").css("background-image","url("+reader.result+")")
         }
         reader.readAsDataURL(file);
     })
