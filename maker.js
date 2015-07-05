@@ -28,11 +28,11 @@ function newCard(){
 function load(string){
     var data = JSON.parse(LZString.decompressFromBase64(string))
     $(".card").attr("class",data.classes)
-    $(".card .nameInput").val(data.name)
+    $(".card .nameInput").val(data.name).change()
     $(".card .attrs").val(data.attrs)
     $(".card .effect").val(data.effect)
-    $(".card .flavour").val(data.flavour)
-    $(".card .copyright").val(data.copyright)
+    $(".card .flavour").val(data.flavour).change()
+    $(".card .copyright").val(data.copyright).change()
 }
 $(document).on("state:adjust",function(event,get,oldGet){
     if (get.card != oldGet.card){

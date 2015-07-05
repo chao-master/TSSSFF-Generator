@@ -27,7 +27,7 @@ function updateFields(newGet,supressEvent){
         } else {
             return
         }
-    }).join("&");
+    }).join("&")
     history.pushState({},"",document.location.pathname+"?"+query)
     if (!supressEvent){
         $(document).trigger("state:adjust",[GET,oldGet]);
