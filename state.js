@@ -18,7 +18,7 @@ function parseQuery(){
     return parsed;
 }
 
-function updateFields(newGet){
+function updateFields(newGet,supressEvent){
     var oldGet = $.extend({},GET);
     $.extend(GET,newGet);
     var query = $.map(GET,function(v,k){
@@ -29,7 +29,9 @@ function updateFields(newGet){
         }
     }).join("&");
     history.pushState({},"",document.location.pathname+"?"+query)
-    $(document).trigger("state:adjust",[GET,oldGet]);
+    if (!suppressEvent){
+        $(document).trigger("state:adjust",[GET,oldGet]);
+    }
 }
 
 window.onpopstate = function(event){
