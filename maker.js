@@ -13,45 +13,39 @@ function mayError(errObj){
 
 //Blanks the cards
 function newCard(){
-    $(".card").attr("class","card pony maleFemale unicorn s0");
-    $(".card .nameInput").val("");
-    $(".card .attrs").val("");
-    $(".card .effect").val("").change();
-    $(".card .flavour").val("").change();
-    $(".card .copyright").val("");
-    EDIT_KEY = null;
-    document.location.hash = "";
-    $("#editUrl,#shareUrl,#image").val("").change().addClass("empty")
-    $("#error").hide();
+    var blankCard = LZString.compressToBase64(JSON.stringify({
+        classes: "card pony maleFemale unicorn s0",
+        name: "",
+        attrs: "",
+        effect: "",
+        flavour: "",
+        copyright: "",
+    }))
+    updateFields({card:blankCard})
 }
 
 //Loads a card
 function load(string){
-    
+    var data = JSON.parse(LZString.decompressFromBase64(string))
+    $(".card").attr("class",data.classes)
+    $(".card .nameInput").val(data.name)
+    $(".card .attrs").val(data.attrs)
+    $(".card .effect").val(data.effect)
+    $(".card .flavour").val(data.flavour)
+    $(".card .copyright").val(data.copyright)
 }
 
 //Saves a card
 function save(){
-    $.post("dbInterface.php",{
-        editkey:EDIT_KEY,
-        classes:$(".card").attr("class"),
-        name:$(".card .nameInput").val(),
-        attr:$(".card .attrs").val(),
-        effect:$(".card .effect").val(),
-        flavour:$(".card .flavour").val(),
-        copyright:$(".card .copyright").val(),
-        image:$("#image").val()
-    },function(r){
-        var d = JSON.parse(r);
-        if(mayError(d)) {return;}
-        document.location.hash = "."
-        document.location.hash = ""
-        $("#editUrl").val(document.location+"edit:"+d["editkey"]);
-        $("#shareUrl").val(document.location+"view:"+d["viewkey"]);
-        $("#editUrl,#shareUrl").removeClass("empty") //Bodge fix for placeholder overlay
-        EDIT_KEY = d["editkey"];
-        document.location.hash = "edit:"+d["editkey"]
-    })
+    var newString = LZString.compressToBase64(JSON.stringify({
+        classes: $(".card").attr("class"),
+        name: $(".card .nameInput").val(),
+        attrs: $(".card .attrs").val(),
+        effect: $(".card .effect").val(),
+        flavour: $(".card .flavour").val(),
+        copyright: $(".card .copyright").val(),
+    }))
+    updateFields({card:newString})
 }
 
 function cardSetup(){
@@ -139,20 +133,6 @@ function cardSetup(){
     //Save, New & Export buttons
     $("#save").click(save)
     $("#new").click(newCard)
-    //$("#exportTo").click(function(){exportCard(1)})
-
-    //Log number of ajax events for the spinner
-    var AJAX_EVENTS = 0
-
-    $( document ).ajaxSend(function(){
-        AJAX_EVENTS++;
-        $("#working").show();
-        $("#error").hide();
-    }).ajaxComplete(function() {
-        if ( --AJAX_EVENTS == 0 ) {
-            $("#working").hide();
-        }
-    });
 
     //Inital call setup functions
     $(window).resize();
