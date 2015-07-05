@@ -38,7 +38,7 @@ function cardSetup(){
     //Add Hidden File Input click cascade
     $(".hiddenFileInput .btn").click(function(e){
         $(this).next().click()
-    })
+    })q
 
     //Constant infomation for special escape code handling.
     var SPECIAL_REGEX = /\\(malefemale|unicorn|pegasus|earth|alicorn|goal|time|female|male|ship|replace|swap|draw|newgoal|search|copy|changeling)/g
