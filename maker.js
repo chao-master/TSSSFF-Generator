@@ -1,6 +1,3 @@
-//After a page is updated this stores the edit key so we can modify it again
-var EDIT_KEY = null;
-
 //Display error
 function mayError(errObj){
     if (errObj.error){
@@ -29,39 +26,8 @@ function newCard(){
 }
 
 //Loads a card
-function load(kind,id){
-    var o={};o[kind]=id
-    $.get("dbInterface.php",o,function(r){
-        var d = JSON.parse(r);
-        EDIT_KEY = null;
-        if(mayError(d)) {return;}
-        $(".card button").each(function(){
-            $(".card").removeClass($(this).attr("value"))
-        })
-        $(".card").addClass(d.classes);
-        $(".card .nameInput").val(d.name).change();
-        $(".card .attrs").val(d.attr);
-        $(".card .effect").val(d.effect);
-        $(".card .flavour").val(d.flavour);
-        $("#image").val(d.image).change();
-        $(".card .copyright").val(d.copyright);
-        $(".card textarea").change();
-
-        document.location.hash = "."
-        document.location.hash = ""
-
-        $("#editUrl,#shareUrl").removeClass("empty") //Bodge fix for placeholder overlay
-
-        $("#shareUrl").val(document.location+"view:"+d["viewkey"]);
-        if(d.editkey){
-            $("#editUrl").val(document.location+"edit:"+d["editkey"]);
-            document.location.hash = "edit:"+d["editkey"]
-            EDIT_KEY = d["editkey"];
-        } else {
-            $("#editUrl").val("Cannot edit");
-            document.location.hash = "view:"+d["viewkey"]
-        }
-    })
+function load(string){
+    
 }
 
 //Saves a card
