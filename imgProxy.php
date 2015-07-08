@@ -13,7 +13,18 @@ foreach ($allowedSites as $site) {
         $handle = fopen($remoteImage, 'rb');
         $img = new Imagick();
         $img->readImageFile($handle);
-        $img->resizeImage(601, 444, 0, 0);
+
+        $width = $img->getImageWidth();
+        $height = $img->getImageHeight();
+
+        $wScale = 601./$width;
+        $hScale = 444./$height;
+
+        if($wScale > $hScale){
+            $img->resizeImage(floor($width*$hScale), 444, 1, 0);
+        } else {
+            $img->resizeImage(601, floor($height*$wScale), 1, 0);
+        }
 
         $imginfo = getimagesize($remoteImage);
         header("Content-type: ".$imginfo['mime']);
