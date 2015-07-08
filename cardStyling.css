@@ -1,24 +1,3 @@
-/* Locations of Things in the file:
-    22  Generic
-    23      Fonts
-    37      Clear After
-    44  Card Helpers
-    68  Card Generics
-    160 Icon Generics
-    181 Card Type Icon & Buttons
-    245 Pony & Start Cards
-    264     Start Card specifics
-    277     Race Icon
-    284         Regular
-    297         Changelings
-    309     Gender Icon
-    328     Time Icon
-    336 Ship Cards
-    349 Goal Cards
-    366     Score Icons
-    397     Selection Buttons
-*/
-
 /* Generic */
     /*Fonts */
         @font-face {
@@ -65,7 +44,7 @@
         min-height:1em;
     }
 
-/* Card Generics */ /*+1*/
+/* Card Generics */
     .card {
         width: 788px;
         height: 1088px;
