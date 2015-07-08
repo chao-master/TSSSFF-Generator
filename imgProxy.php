@@ -17,9 +17,8 @@ foreach ($allowedSites as $site) {
 
         $imginfo = getimagesize($remoteImage);
         header("Content-type: ".$imginfo['mime']);
-        echo $img;
+        echo $img->getImageBlob();
         die();
-
     }
 }
 //If not try a redirect to see if they have CROS
