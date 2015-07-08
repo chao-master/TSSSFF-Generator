@@ -20,7 +20,7 @@ foreach ($allowedSites as $site) {
         $wScale = 601./$width;
         $hScale = 444./$height;
 
-        if($wScale > $hScale){
+        if($wScale < $hScale){
             $img->resizeImage(floor($width*$hScale), 444, 1, 0);
         } else {
             $img->resizeImage(601, floor($height*$wScale), 1, 0);
