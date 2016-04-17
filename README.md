@@ -1,7 +1,7 @@
 TSSSFF-Generator
 ================
 
-Also see The projects forks:
+This project is no longer as maintained as it used to be, instead see the projects forks:
  * [TSSSF-App](https://github.com/chao-master/TSSSF-App): A webapp/offline/mobile version
  * [TSSSF-Frontend](https://github.com/coandco/TSSSF-Frontend): Fork Utilizing the frontend to connect to [CardMachine](https://github.com/HorriblePeople/CardMachine)
 
